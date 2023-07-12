@@ -27,19 +27,19 @@ INSERT INTO public.users(
 	email, photo, firstname, lastname, curse, github)
 	VALUES ('saana.toivonen@example.com', 
 			'https://randomuser.me/api/portraits/women/77.jpg', 
-			'Saana', 'Toivonen', 23-04, 'https://github.com/Saana'),
+			'Saana', 'Toivonen', '23-04', 'https://github.com/Saana'),
 			('debra.rodriquez@example.com', 
 			'https://randomuser.me/api/portraits/women/35.jpg', 
-			'Debra', 'Rodriquez', 23-04, 'https://github.com/Debra'),
+			'Debra', 'Rodriquez', '23-04', 'https://github.com/Debra'),
 			('aaron.toivonen@example.com', 
 			'https://randomuser.me/api/portraits/men/70.jpg', 
-			'Aaron', 'Fetcher', 23-01, 'https://github.com/Aaron'),
+			'Aaron', 'Fetcher', '23-01', 'https://github.com/Aaron'),
 			('sandrine.toivonen@example.com', 
 			'https://randomuser.me/api/portraits/women/50.jpg', 
-			'Sandrine', 'Lambert', 23-01, 'https://github.com/Sandrine'),
+			'Sandrine', 'Lambert', '23-01', 'https://github.com/Sandrine'),
 			('michal.toivonen@example.com', 
 			'https://randomuser.me/api/portraits/women/77.jpg', 
-			'Michal', 'Toivonen', 23-01, 'https://github.com/Michal');
+			'Michal', 'Toivonen', '23-01', 'https://github.com/Michal');
 -- Insert projects
 INSERT INTO public.projects(
 	user_id, title, description, todo, img_small, img_big, github, site)
