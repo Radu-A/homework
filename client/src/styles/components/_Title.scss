@@ -1,0 +1,13 @@
+.title-section {
+    @include flex-row;
+}
+
+.logo-img {
+    width: 4rem;
+    padding-bottom: 0.6rem;
+}
+
+.title-section h1 {
+    font-family: $indiFlower;
+    font-size: 4rem;
+}

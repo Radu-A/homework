@@ -1,5 +1,6 @@
 // Require express
 const express = require('express');
+var cors = require('cors')
 
 // Initialize express
 const app = express();
@@ -10,6 +11,7 @@ const usersRouter = require('./routes/usersRoutes');
 const projectsRouter = require('./routes/projectsRoutes');
 
 // Middlewares
+app.use(cors());
 app.use(express.json());
 app.use('/api/users', usersRouter);
 app.use('/api/projects', projectsRouter);

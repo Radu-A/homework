@@ -7,11 +7,13 @@ import Project from '../Project/Project';
 const Main = () => {
   return (
     <>
-      <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/user" element={<User />} />
-          <Route path="/project" element={<Project />} />
-      </Routes>
+      <main>
+        <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/user" element={<User />} />
+            <Route path="/project" element={<Project />} />
+        </Routes>
+      </main>
     </>
   );
 };
