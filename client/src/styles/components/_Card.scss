@@ -1,0 +1,64 @@
+
+.card-article {
+    margin: 1.5rem auto;
+    padding-top: 2rem;
+    padding-bottom: 1rem;
+    max-width: 450px;
+    // border: 2px solid $purple;
+    box-shadow: 0px 1px 14px 1px rgb(182, 182, 182);
+    border-radius: 5px;
+    @include flex-column;
+    gap: 1rem
+}
+
+.date-paragraph {
+    text-align: right;
+    margin: 0;
+    margin-top: 0.5rem;
+}
+
+.header-card {
+    width: 70%;
+    @include flex-row;
+    justify-content: space-between;
+}
+
+.header-card h3 {
+    text-align: right;
+    margin: 0;
+}
+
+.header-card p {
+    text-align: right;
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+.img-header-article {
+    width: 4rem;
+    border-radius: 4rem;
+}
+
+.description-card {
+    @include flex-row;
+    align-items: start;
+    gap: 1rem;
+    padding: 1.8rem;
+}
+
+.description-card-text {
+    width: 65%;
+}
+
+.description-card-text h3 {
+    margin-top: 0;
+}
+
+.description-card-text p {
+    font-size: 0.9rem;
+}
+
+.card-img {
+    width: 30%;
+    border-radius: 5px;
+}
