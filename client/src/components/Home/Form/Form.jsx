@@ -6,7 +6,7 @@ const Form = ({setProjectList}) => {
 
     const getProjects = async ()=> {
       try {
-        const resp = await fetch('http://localhost:3000/api/projects?project_id=2');
+        const resp = await fetch('http://localhost:3000/api/projects');
         const data = await resp.json();
         setProjectList(data);
       } catch (error) {
