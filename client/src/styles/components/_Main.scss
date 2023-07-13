@@ -3,4 +3,7 @@
 
 main {
     @include flex-column;
+    font-family: $roboto;
+    font-weight: 400;
+    color: $purple
 }
