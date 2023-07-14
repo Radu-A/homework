@@ -30,25 +30,41 @@ const Project = () => {
     <>
       <Title />
       <section className="project-section">
-        {project && 
-        <>
-          <HeaderProject project={project} />
-        <article className="description-article">
-          <h3>Desciption</h3>
-          <p>{project.description}</p>
-        </article>
-        <article className="img-big-article">
-          <img src={project.img_big} alt="" />
-        </article>
-        <article className="done-article">
-          <h3>Done</h3>
-          <p>{project.done}</p>
-        </article>
-        <article className="todo-article">
-          <h3>To do</h3>
-          <p>{project.todo}</p>
-        </article>
-        </>}
+        {project && (
+          <>
+            <HeaderProject project={project} />
+            <article className="description-article">
+              <h3>Desciption</h3>
+              <p>{project.description}</p>
+            </article>
+            <article className="img-big-article">
+              <img src={project.img_big} alt="" />
+            </article>
+            <article className="done-article">
+              <h3>Done</h3>
+              <p>{project.done}</p>
+            </article>
+            <article className="todo-article">
+              <h3>To do</h3>
+              <p>{project.todo}</p>
+            </article>
+            <article className="link-article">
+              <h2>Git repository</h2>
+              <h3>
+                <a href={project.github} target="blank">
+                  {project.github}
+                </a>
+              </h3>
+              <h2>Live site</h2>
+              <h3>
+                <a href={project.site} target="blank">
+                  {project.site}
+                </a>
+              </h3>
+            </article>
+            <article className="link-article"></article>
+          </>
+        )}
       </section>
     </>
   );

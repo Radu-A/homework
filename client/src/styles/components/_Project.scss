@@ -1,3 +1,9 @@
 .img-big-article img {
     width: 100%;
 }
+
+.link-article {
+    padding-right: 1rem;
+    @include flex-column;
+    align-items: flex-end;
+}

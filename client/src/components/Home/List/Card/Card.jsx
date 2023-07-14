@@ -15,12 +15,12 @@ const Card = ({project}) => {
           <img className="img-header-article" src={project.photo} alt="" />
           <div className="text-header-card">
             <h3><Link to={url} >{project.title}</Link></h3>
-            <p>{project.firstname} {project.lastname}</p>
+            <p>{project.firstname} {project.lastname} - <span>FS {project.curse}</span></p>
           </div>
         </div>
         <div className="description-card">
           <div className="description-card-text">
-            <h3>{project.development}</h3>
+            <h3><span>{project.date} -</span> {project.development}</h3>
             <p>{project.description}</p>
           </div>
           <img className="card-img" src={project.img_small} alt="" />

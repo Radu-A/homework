@@ -22,6 +22,9 @@ const Form = ({setProjectList}) => {
         <input type="text" />
         <select name="" id="">
           <option value="">order by</option>
+          <option value="">Curse</option>
+          <option value="">Date</option>
+          <option value="">User</option>
         </select>
       </section>
     </>
