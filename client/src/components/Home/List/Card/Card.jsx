@@ -8,9 +8,6 @@ const Card = ({project}) => {
   return (
     <>
       <article className="card-article">
-        {/* <div>
-        <p className="date-paragraph">{project.date}</p>
-        </div> */}
         <div className="header-card">
           <img className="img-header-article" src={project.photo} alt="" />
           <div className="text-header-card">

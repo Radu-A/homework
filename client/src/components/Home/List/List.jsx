@@ -5,7 +5,7 @@ import Card from "./Card/Card";
 const List = ({projectList}) => {
 
   return (
-    <section className="list-section">
+    <section className='list-section'>
       {projectList.length > 0 &&
         projectList.map(project=><Card key={uuidv4()} project={project}/>)}
     </section>

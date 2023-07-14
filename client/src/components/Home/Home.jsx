@@ -4,18 +4,17 @@ import Form from "./Form/Form";
 import List from "./List/List";
 
 const Home = () => {
+  const [projectList, setProjectList] = useState([]);
 
-  const [projectList, setProjectList] = useState([])
-
-  const updateProjectList = (data)=> {
-    setProjectList(data)
-  }
+  const updateProjectList = (data) => {
+    setProjectList(data);
+  };
 
   return (
     <>
       <Title />
-      <Form setProjectList={setProjectList}/>
-      <List projectList={projectList}/>
+      <Form projectList={projectList} updateProjectList={updateProjectList} />
+      <List projectList={projectList} />
     </>
   );
 };
