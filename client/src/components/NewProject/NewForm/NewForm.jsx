@@ -10,6 +10,14 @@ const NewForm = ({ setUser }) => {
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
+    fetch(`http://localhost:3000/api/projects`,
+    {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    })
+    .then(window.location.reload())
+    .catch(error=>console.log(error));
     console.log(data);
   };
   console.log(errors);
@@ -21,42 +29,42 @@ const NewForm = ({ setUser }) => {
           <input
             type="number"
             placeholder="User_id"
-            {...register("User_id", { required: true, max: 10 })}
+            {...register("user_id", { required: true, max: 10 })}
           />
           <input
             type="text"
             placeholder="Title"
-            {...register("Title", { required: true, min: 3 })}
+            {...register("title", { required: true, min: 3 })}
           />
-          <select {...register("Development", { required: true })}>
+          <select {...register("development", { required: true })}>
             <option value="Front-End">Front-End</option>
             <option value=" Back-End"> Back-End</option>
             <option value=" Full-Stack"> Full-Stack</option>
           </select>
           <textarea
-            {...register("Description", { required: true, max: 299 })}
+            {...register("description", { required: true, max: 299 })}
           />
-          <textarea {...register("Done", { required: true, max: 548 })} />
-          <textarea {...register("Todo", { required: true, max: 549 })} />
+          <textarea {...register("done", { required: true, max: 548 })} />
+          <textarea {...register("todo", { required: true, max: 549 })} />
           <input
             type="text"
             placeholder="Screenshot small"
-            {...register("Screenshot small", { required: true })}
+            {...register("screenshot small", { required: true })}
           />
           <input
             type="text"
             placeholder="Screenshot big"
-            {...register("Screenshot big", { required: true, max: 44 })}
+            {...register("screenshot big", { required: true, max: 44 })}
           />
           <input
             type="text"
             placeholder="Github"
-            {...register("Github", { required: true, max: 45 })}
+            {...register("github", { required: true, max: 45 })}
           />
           <input
             type="text"
             placeholder="Site"
-            {...register("Site", { required: true, max: 45 })}
+            {...register("site", { required: true, max: 45 })}
           />
           <input type="submit" value="Create"/>
         </form>
