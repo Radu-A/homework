@@ -7,7 +7,6 @@ const Form = ({ projectList, updateProjectList }) => {
 
   const [keyword, setKeyword] = useState('');
 
-
   useEffect(() => {
     const getProjects = async () => {
       try {
@@ -36,8 +35,6 @@ const Form = ({ projectList, updateProjectList }) => {
 
   useEffect(() => {
     const getProjects = async () => {
-      console.log('this is your keyword');
-      console.log(keyword);
       try {
         const resp = await fetch(`http://localhost:3000/api/projects/search?keyword=${keyword}`);
         const data = await resp.json();
@@ -51,8 +48,6 @@ const Form = ({ projectList, updateProjectList }) => {
 
   const { register, handleSubmit, formState: { errors } } = useForm();
   const onSubmit = data => {
-    console.log('this is your data');
-    console.log(data.Search);
     setKeyword(data.Search);
   };
   console.log(errors);
