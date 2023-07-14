@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 
-const NewForm = ({ setUser }) => {
-  const [newProject, setNewProject] = useState();
+// https://api.github.com/users/${username}
+
+const NewForm = ({ user }) => {
 
   const {
     register,
@@ -10,15 +11,30 @@ const NewForm = ({ setUser }) => {
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
+    console.log(user.user_id);
+    console.log(typeof user.user_id);
+    let newProject = {
+      "user_id": user.user_id,
+      "title": data.title,
+      "development": data.development,
+      "description": data.description,
+      "done": data.done,
+      "todo": data.todo,
+      "img_small": data.img_small,
+      "img_big": data.img_big,
+      "github": data.github,
+      "site": data.site
+      }
+
     fetch(`http://localhost:3000/api/projects`,
     {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data)
+      body: JSON.stringify(newProject)
     })
     .then(window.location.reload())
     .catch(error=>console.log(error));
-    console.log(data);
+    console.log(newProject);
   };
   console.log(errors);
 
@@ -26,11 +42,11 @@ const NewForm = ({ setUser }) => {
     <>
       <section className="new-form-section">
         <form className="new-form" onSubmit={handleSubmit(onSubmit)}>
-          <input
+          {/* <input
             type="number"
             placeholder="User_id"
             {...register("user_id", { required: true, max: 10 })}
-          />
+          /> */}
           <input
             type="text"
             placeholder="Title"

@@ -29,7 +29,7 @@ const NewProject = () => {
     <>
       <Title />
       <UserInfo user={user}/>
-      <NewForm />
+      <NewForm user={user}/>
     </>
   );
 };
