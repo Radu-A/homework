@@ -50,7 +50,7 @@ const Form = ({ projectList, updateProjectList }) => {
   const onSubmit = data => {
     setKeyword(data.Search);
   };
-  console.log(errors);
+    console.log(errors);
 
   const handleSelectChanche = (event) => {
     setQuery(event.target.value);

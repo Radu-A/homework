@@ -34,18 +34,18 @@ const Project = () => {
           <>
             <HeaderProject project={project} />
             <article className="description-article">
-              <h3>Desciption</h3>
+              <h2>Desciption</h2>
               <p>{project.description}</p>
             </article>
             <article className="img-big-article">
               <img src={project.img_big} alt="" />
             </article>
             <article className="done-article">
-              <h3>Done</h3>
+              <h2>Done</h2>
               <p>{project.done}</p>
             </article>
             <article className="todo-article">
-              <h3>To do</h3>
+              <h2>To do</h2>
               <p>{project.todo}</p>
             </article>
             <article className="link-article">

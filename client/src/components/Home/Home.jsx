@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Title from "../Title/Title";
-import Form from "./Form/Form";
-import List from "./List/List";
+import SearchForm from './SearchForm';
+import SearchList from './SearchList/SearchList';
 
 const Home = () => {
   const [projectList, setProjectList] = useState([]);
@@ -13,8 +13,8 @@ const Home = () => {
   return (
     <>
       <Title />
-      <Form projectList={projectList} updateProjectList={updateProjectList} />
-      <List projectList={projectList} />
+      <SearchForm projectList={projectList} updateProjectList={updateProjectList} />
+      <SearchList projectList={projectList} />
     </>
   );
 };
