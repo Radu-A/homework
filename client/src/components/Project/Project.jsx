@@ -2,11 +2,19 @@ import React, { useState, useEffect } from "react";
 import Title from "../Title/Title";
 import HeaderProject from "./HeaderProject/HeaderProject";
 import { useLocation } from "react-router";
+import { useContext } from "react";
+import { TitleContext } from "../../context/titleContext";
 
 const Project = () => {
   const [project, setProject] = useState({});
 
   const location = useLocation();
+
+  const { title, updateTitle } = useContext(TitleContext);
+
+  useEffect(()=>{
+    updateTitle('Project Details');
+  }, [])
 
   useEffect(() => {
     const queryParams = new URLSearchParams(location.search);

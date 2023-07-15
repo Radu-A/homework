@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { TitleContext } from "../../context/titleContext";
+
 import UserInfo from "../NewProject/UserInfo/UserInfo";
 import UserList from "./UserList/UserList";
 import Title from "../Title/Title";
@@ -9,6 +12,12 @@ const User = () => {
   const [projectList, setProjectList] = useState([]);
   const [user, setUser] = useState({});
   const [url, setUrl] = useState("");
+
+  const { title, updateTitle } = useContext(TitleContext);
+
+  useEffect(()=>{
+    updateTitle('Dashboard');
+  }, [])
 
   useEffect(() => {
     const queryParams = new URLSearchParams(location.search);

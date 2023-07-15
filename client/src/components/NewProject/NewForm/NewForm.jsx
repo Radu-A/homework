@@ -1,9 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
+import { useContext } from "react";
+import { TitleContext } from "../../../context/titleContext";
 
 // https://api.github.com/users/${username}
 
 const NewForm = ({ user }) => {
+
+  const { title, updateTitle } = useContext(TitleContext);
+
+  useEffect(()=>{
+    updateTitle('New Project');
+  }, [])
 
   const {
     register,

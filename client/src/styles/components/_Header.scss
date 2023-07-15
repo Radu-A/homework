@@ -1,0 +1,21 @@
+@import '../utils/variables.scss';
+@import '../utils/mixins.scss';
+
+header {
+    width: 100vw;
+}
+
+.logo-div {
+    margin: 0;
+    @include flex-row;
+}
+
+.logo-div-img {
+    width: 3rem;
+}
+
+.logo-div h1 {
+    margin: 0;
+    font-family: $indiFlower;
+    font-size: 2rem;
+}

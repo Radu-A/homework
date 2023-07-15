@@ -1,5 +1,6 @@
 .title-section {
     @include flex-row;
+    text-align: left;
 }
 
 .logo-img {

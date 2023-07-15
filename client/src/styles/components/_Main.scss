@@ -1,9 +1,13 @@
 @import '../utils/variables.scss';
 @import '../utils/mixins.scss';
 
+#root {
+    width: 100%;
+}
+
 main {
     @include flex-column;
     font-family: $roboto;
     font-weight: 400;
-    color: $purple
 }
+

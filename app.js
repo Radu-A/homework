@@ -10,6 +10,9 @@ const port = 3000;
 const usersRouter = require('./routes/usersRoutes');
 const projectsRouter = require('./routes/projectsRoutes');
 
+// Cookie-parser
+const cookieParser = require("cookie-parser");
+
 // Middlewares
 app.use(cors());
 app.use(express.json());
