@@ -10,7 +10,7 @@ const Form = ({ projectList, updateProjectList }) => {
   useEffect(() => {
     const getProjects = async () => {
       try {
-        const resp = await fetch("http://localhost:3000/api/projects");
+        const resp = await fetch("/api/projects");
         const data = await resp.json();
         updateProjectList(data);
       } catch (error) {

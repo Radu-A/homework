@@ -5,9 +5,14 @@ header {
     width: 100vw;
 }
 
+.MuiContainer-root {
+    background-color: #4796e5;
+}
+
 .logo-div {
     margin: 0;
     @include flex-row;
+    color: black;
 }
 
 .logo-div-img {

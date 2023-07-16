@@ -10,7 +10,7 @@ const HeaderProject = ({project}) => {
               <p>Full-Stack {project.curse}</p>
           </div>
           <div className="header-title">
-            <h2>{project.title} Superproject</h2>
+            <h2>{project.title}</h2>
             <h3>{project.development}</h3>
             <p>{project.date}</p>
           </div>

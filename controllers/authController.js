@@ -10,6 +10,7 @@ const getJWT = (req, res) => {
   if (req.body.user === "user" && req.body.password === "password") {
     const payload = {
       check: true,
+      email: req.body.email
     };
     const token = jwt.sign(payload, app.get('key'), {
       expiresIn: 1440000,
