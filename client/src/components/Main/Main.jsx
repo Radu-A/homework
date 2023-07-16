@@ -5,7 +5,7 @@ import User from '../User/User';
 import Project from '../Project/Project';
 import NewProject from '../NewProject/NewProject';
 import UserInfo from '../NewProject/UserInfo/UserInfo';
-
+import Login from '../Login/Login';
 
 
 const Main = () => {
@@ -18,6 +18,7 @@ const Main = () => {
             <Route path="/project" element={<Project />} />
             <Route path="/newproject" element={<NewProject />} />
             <Route path='/user' element={<UserInfo />}/>
+            <Route path='/login' element={<Login />} />
         </Routes>
       </main>
     </>
