@@ -18,7 +18,8 @@ const SignUp = () => {
       <Title />
       <GithubInfo githubInfo={githubInfo}/>
       <GithubForm githubInfo={githubInfo} setGithubInfo={setGithubInfo}/>
-      <SignForm githubInfo={githubInfo}/>
+      {githubInfo && <SignForm githubInfo={githubInfo}/>}
+      
     </section>
   );
   

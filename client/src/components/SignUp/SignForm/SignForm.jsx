@@ -22,6 +22,9 @@ const SignForm = ({githubInfo}) => {
     },
   });
 
+  console.log('datos github')
+  console.log(githubInfo.firsname)
+
   const onSubmit = (data) => {
     let newUser = {
       email: data.email,
