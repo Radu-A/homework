@@ -6,6 +6,7 @@ import { UserLoggedContext } from "./context/userLoggedContext";
 import Main from "./components/Main/Main";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
+import { UserContext } from "./context/userContext";
 
 function App() {
   // Context for title state
@@ -19,24 +20,38 @@ function App() {
   };
 
   // Context for userLogged state
-  const [userLogged, setUserLogged] = useState("");
+  const [userLogged, setUserLogged] = useState('');
+
   const updateUserLogged = (email) => {
+    console.log("holi");
     setUserLogged(email);
-  }
+  };
   const userLoggedData = {
     userLogged,
-    updateUserLogged
-  }
+    updateUserLogged,
+  };
+
+  // Context for user state
+  const [user, setUser] = useState({});
+  const updateUser = (user) => {
+    setUser(user);
+  };
+  const userData = {
+    user,
+    updateUser,
+  };
 
   return (
     <>
       <BrowserRouter>
-        <UserLoggedContext.Provider value={userLoggedData}>
-        <TitleContext.Provider value={titleData}>
-          <Header />
-          <Main />
-        </TitleContext.Provider>
-        </UserLoggedContext.Provider>
+        <UserContext.Provider value={userData}>
+          <UserLoggedContext.Provider value={userLoggedData}>
+            <TitleContext.Provider value={titleData}>
+              <Header />
+              <Main />
+            </TitleContext.Provider>
+          </UserLoggedContext.Provider>
+        </UserContext.Provider>
       </BrowserRouter>
       <Footer />
     </>

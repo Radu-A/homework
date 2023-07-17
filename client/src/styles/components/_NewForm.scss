@@ -2,12 +2,6 @@
     padding: 3rem;
 }
 
-.new-form {
-    width: 250px;
-    @include flex-column;
-    gap: 1rem;
-}
-
 .new-form > * {
     width: 100%;
 }

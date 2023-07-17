@@ -1,19 +1,19 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Title from "../Title/Title";
 import NewForm from "./NewForm/NewForm";
 import UserInfo from "./UserInfo/UserInfo";
+import { UserLoggedContext } from "../../context/userLoggedContext";
 
 const NewProject = () => {
   const [user, setUser] = useState({});
+  const { userLogged, updateUserLogged } = useContext(UserLoggedContext);
 
   useEffect(() => {
-    const queryParams = new URLSearchParams(location.search);
-    const userId = queryParams.get("user_id");
 
-    const getProject = async () => {
+    const getUser = async () => {
       try {
         const resp = await fetch(
-          `http://localhost:3000/api/users?user_id=${userId}`
+          `http://localhost:3000/api/users?email=${userLogged}`
         );
         const data = await resp.json();
         setUser(data[0]);
@@ -21,8 +21,8 @@ const NewProject = () => {
         console.log(error);
       }
     };
-    getProject();
-  }, []);
+    getUser();
+  }, [userLogged]);
 
   return (
     <>

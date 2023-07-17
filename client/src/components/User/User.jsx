@@ -3,33 +3,32 @@ import { useLocation } from "react-router";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { TitleContext } from "../../context/titleContext";
+import { UserLoggedContext } from "../../context/userLoggedContext";
 
 import UserInfo from "../NewProject/UserInfo/UserInfo";
 import UserList from "./UserList/UserList";
 import Title from "../Title/Title";
+import { UserContext } from "../../context/userContext";
 
 const User = () => {
   const [projectList, setProjectList] = useState([]);
-  const [user, setUser] = useState({});
-  const [url, setUrl] = useState("");
+  // const [user, setUser] = useState({});
+  const [newUrl, setNewUrl] = useState("");
 
   const { title, updateTitle } = useContext(TitleContext);
-
-  useEffect(()=>{
-    updateTitle('Dashboard');
-  }, [])
+  const { userLogged, updateUserLogged } = useContext(UserLoggedContext);
+  const { user, updateUser } = useContext(UserContext);
 
   useEffect(() => {
-    const queryParams = new URLSearchParams(location.search);
-    const userId = queryParams.get("user_id");
-    setUrl(`/newproject?user_id=${userId}`);
+    updateTitle("Dashboard");
+
     const getUser = async () => {
       try {
         const resp = await fetch(
-          `http://localhost:3000/api/users?user_id=${userId}`
+          `http://localhost:3000/api/users?email=${userLogged}`
         );
         const data = await resp.json();
-        setUser(data[0]);
+        updateUser(data[0]);
       } catch (error) {
         console.log(error);
       }
@@ -39,7 +38,7 @@ const User = () => {
     const getProjects = async () => {
       try {
         const resp = await fetch(
-          `http://localhost:3000/api/projects?user_id=${userId}`
+          `http://localhost:3000/api/projects?email=${userLogged}`
         );
         const data = await resp.json();
         setProjectList(data);
@@ -48,15 +47,15 @@ const User = () => {
       }
     };
     getProjects();
-  }, []);
+  }, [userLogged]);
 
   return (
     <>
       <Title />
-      <UserInfo user={user} />
+      {user && <UserInfo user={user} />}
       <section className="upload-section">
-        <Link to={url}>
-          <button className="upload-button">UPLOAD</button>
+        <Link to="/newproject">
+          <button className="upload-button">NEW PROJECT</button>
         </Link>
       </section>
       <UserList projectList={projectList} />

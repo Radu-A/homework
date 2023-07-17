@@ -11,3 +11,9 @@ main {
     font-weight: 400;
 }
 
+form 
+{
+    width: 250px;
+    @include flex-column;
+    gap: 1rem;
+}

@@ -1,14 +1,27 @@
-import React, { useContext, useState } from "react";
-import { useForm } from 'react-hook-form';
+import React, { useContext, useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
 import { UserLoggedContext } from "../../context/userLoggedContext";
+import { Navigate, redirect, useNavigate } from "react-router-dom";
+import Title from "../Title/Title";
+import { TitleContext } from "../../context/titleContext";
 
 const Login = () => {
+  const {title, updateTitle} = useContext(TitleContext);
+  const { userLogged, updateUserLogged } = useContext(UserLoggedContext);
+  const [message, setMessage] = useState("");
+  const [userUrl, setUserUrl] = useState("");
+  const navigate = useNavigate();
 
-  const {userLogged, updateUserLogged} = useContext()
-  const [message, setMessage] = useState('')
+  useEffect(()=>{
+    updateTitle('Log In');
+  }, [])
 
-  const { register, handleSubmit, formState: { errors } } = useForm(UserLoggedContext);
-  const onSubmit = data => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm(UserLoggedContext);
+  const onSubmit = (data) => {
     // console.log(data);
     // const tryLogin = async ()=> {
     //   try {
@@ -27,19 +40,33 @@ const Login = () => {
     // }
     // tryLogin();
     // This change the state of userLogged and the routes you can visit
-    updateUserLogged(data.email)
+    updateUserLogged(data.email);
+    console.log(userLogged);
+    // setUserUrl(`/user?email=${data.email}`)
+    navigate('/user');
   };
   console.log(errors);
-  
+
   return (
     <>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <input type="text" placeholder="user" {...register("user", {required: true})} />
-        <input type="text" placeholder="password" {...register("password", {required: true})} />
+      <section className="login-section">
+        <Title />
+        <form className="login-form" onSubmit={handleSubmit(onSubmit)}>
+          <input
+            type="text"
+            placeholder="email"
+            {...register("email", { required: true })}
+          />
+          <input
+            type="text"
+            placeholder="password"
+            {...register("password", { required: true })}
+          />
 
-        <input type="submit" />
-      </form>
-      {message && <div>{message}</div>}
+          <input type="submit" />
+        </form>
+        {message && <div>{message}</div>}
+      </section>
     </>
   );
 };
