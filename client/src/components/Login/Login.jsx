@@ -1,29 +1,33 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useForm } from 'react-hook-form';
+import { UserLoggedContext } from "../../context/userLoggedContext";
 
 const Login = () => {
 
+  const {userLogged, updateUserLogged} = useContext()
   const [message, setMessage] = useState('')
 
-  const { register, handleSubmit, formState: { errors } } = useForm();
+  const { register, handleSubmit, formState: { errors } } = useForm(UserLoggedContext);
   const onSubmit = data => {
-    console.log(data);
-    const tryLogin = async ()=> {
-      try {
-        const resp = await fetch(`/auth/login`,
-        {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(data)
-        });
-        const respData = await resp.json();
-        console.log(respData);
-        setMessage(respData.message);
-      } catch (error) {
-        console.log(error)
-      }
-    }
-    tryLogin();
+    // console.log(data);
+    // const tryLogin = async ()=> {
+    //   try {
+    //     const resp = await fetch(`/auth/login`,
+    //     {
+    //       method: 'POST',
+    //       headers: { 'Content-Type': 'application/json' },
+    //       body: JSON.stringify(data)
+    //     });
+    //     const respData = await resp.json();
+    //     console.log(respData);
+    //     setMessage(respData.message);
+    //   } catch (error) {
+    //     console.log(error)
+    //   }
+    // }
+    // tryLogin();
+    // This change the state of userLogged and the routes you can visit
+    updateUserLogged(data.email)
   };
   console.log(errors);
   
