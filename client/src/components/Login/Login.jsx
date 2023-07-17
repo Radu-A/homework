@@ -22,6 +22,7 @@ const Login = () => {
     formState: { errors },
   } = useForm(UserLoggedContext);
   const onSubmit = (data) => {
+
     // console.log(data);
     // const tryLogin = async ()=> {
     //   try {
@@ -40,6 +41,7 @@ const Login = () => {
     // }
     // tryLogin();
     // This change the state of userLogged and the routes you can visit
+
     updateUserLogged(data.email);
     console.log(userLogged);
     // setUserUrl(`/user?email=${data.email}`)
