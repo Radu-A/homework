@@ -5,9 +5,9 @@ import Home from '../Home/Home';
 import User from '../User/User';
 import Project from '../Project/Project';
 import NewProject from '../NewProject/NewProject';
-import SignIn from '../SignIn/SignIn';
 import Login from '../Login/Login';
 import LogOut from '../LogOut/LogOut';
+import SignUp from '../SignUp/SignUp';
 
 const Main = () => {
 
@@ -27,8 +27,8 @@ const Main = () => {
           </> :
           <>
             <Route path="/" element={<Home />} />
-            <Route path="/user" element={<User />} />
-            <Route path='/signin' element={<SignIn />} />
+            <Route path="/project" element={<Project />} />
+            <Route path='/signin' element={<SignUp />} />
             <Route path='/login' element={<Login />} />
           </>}
         </Routes>

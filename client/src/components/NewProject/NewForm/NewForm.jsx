@@ -19,8 +19,6 @@ const NewForm = ({ user }) => {
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
-    console.log(user.user_id);
-    console.log(typeof user.user_id);
     let newProject = {
       "user_id": user.user_id,
       "title": data.title,

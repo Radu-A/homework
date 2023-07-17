@@ -21,50 +21,26 @@ const Navbar = () => {
   const [settings, setSettigs] = useState([]);
 
   const { userLogged, updateUserLogged } = useContext(UserLoggedContext);
-  const {user, updateUser} = useContext(UserContext);
-
-  // useEffect(() => {
-  //   if (userLogged) {
-  //     setPages([
-  //       { name: "My Projects", url: "/user" },
-  //       { name: "New Project", url: "/newproject" },
-  //       { name: "Log Out", url: "/logout" }
-  //     ]);
-  //     setSettigs([
-  //       { name: "My Projects", url: "/user" },
-  //       { name: "New Project", url: "/newproject" },
-  //       { name: "Log Out", url: "/logout" }
-  //     ]);
-  //   } else {
-  //     setPages([
-  //       { name: "Sign In", url: "/signin" },
-  //       { name: "Login", url: "/login" },
-  //     ]);
-  //     setSettigs([
-  //       { name: "Sign In", url: "/signin" },
-  //       { name: "Login", url: "/login" },
-  //     ]);
-  //   }
-  // }, []);
+  const { user, updateUser } = useContext(UserContext);
 
   useEffect(() => {
-    if (userLogged !== '') {
+    if (userLogged !== "") {
       setPages([
         { name: "My Projects", url: "/user" },
-        { name: "New Project", url: "/newproject" }
+        { name: "New Project", url: "/newproject" },
       ]);
       setSettigs([
         { name: "My Projects", url: "/user" },
         { name: "New Project", url: "/newproject" },
-        { name: "Log Out", url: "/logout" }
+        { name: "Log Out", url: "/logout" },
       ]);
     } else {
       setPages([
-        { name: "Sign In", url: "/signin" },
+        { name: "Sign Up", url: "/signin" },
         { name: "Login", url: "/login" },
       ]);
       setSettigs([
-        { name: "Sign In", url: "/signin" },
+        { name: "Sign Up", url: "/signin" },
         { name: "Login", url: "/login" },
       ]);
     }
@@ -92,12 +68,16 @@ const Navbar = () => {
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-            <div className="logo-div">
-              <div>
-                <img className="logo-div-img" src={homework1} alt="" />
-              </div>
-              <h1><Link className="nav-link" to='/'>Homework</Link></h1>
+          <div className="logo-div">
+            <div>
+              <img className="logo-div-img" src={homework1} alt="" />
             </div>
+            <h1>
+              <Link className="nav-link" to="/">
+                Homework
+              </Link>
+            </h1>
+          </div>
           <Typography
             variant="h5"
             noWrap
@@ -113,14 +93,7 @@ const Navbar = () => {
               color: "inherit",
               textDecoration: "none",
             }}
-          >
-            <div className="logo-div">
-              <div>
-                <img className="logo-div-img" src={homework1} alt="" />
-              </div>
-              <h1>Homework</h1>
-            </div>
-          </Typography>
+          ></Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
               <Button
@@ -128,7 +101,9 @@ const Navbar = () => {
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: "white", display: "block" }}
               >
-                <Link className="nav-link" to={page.url}>{page.name}</Link>
+                <Link className="nav-link" to={page.url}>
+                  {page.name}
+                </Link>
               </Button>
             ))}
           </Box>
@@ -136,10 +111,11 @@ const Navbar = () => {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                {user.photo ? 
-                <Avatar alt="Remy Sharp" src={user.photo} /> :
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />}
-                
+                {user.photo ? (
+                  <Avatar alt="Remy Sharp" src={user.photo} />
+                ) : (
+                  <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                )}
               </IconButton>
             </Tooltip>
             <Menu
@@ -160,7 +136,11 @@ const Navbar = () => {
             >
               {settings.map((setting) => (
                 <MenuItem key={setting.name} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center"><Link className="nav-link" to={setting.url}>{setting.name}</Link></Typography>
+                  <Typography textAlign="center">
+                    <Link className="nav-link" to={setting.url}>
+                      {setting.name}
+                    </Link>
+                  </Typography>
                 </MenuItem>
               ))}
             </Menu>
