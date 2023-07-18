@@ -16,6 +16,12 @@ const projectQueries = {
 	FROM projects AS p
 	INNER JOIN users AS u ON p.user_id=u.user_id
 	WHERE p.user_id=$1`,
+  getProjectsByEmail: `
+    SELECT project_id, p.user_id, u.photo, u.firstname, u.lastname, u.curse, u.github,
+	title, date, development, description, done, todo, img_small, img_big, p.github, site
+	FROM projects AS p
+	INNER JOIN users AS u ON p.user_id=u.user_id
+	WHERE u.email=$1`,
   getProjectsDateOrder: `
     SELECT project_id, p.user_id, u.photo, u.firstname, u.lastname, u.curse, u.github,
 	title, date, development, description, done, todo, img_small, img_big, p.github, site
@@ -36,11 +42,11 @@ const projectQueries = {
 	ORDER BY development`,
   // getProjecsByKeyword: `
   // SELECT project_id, p.user_id, u.photo, u.firstname, u.lastname, u.curse, u.github,
-	// title, date, development, description, done, todo, img_small, img_big, p.github, site
-	// FROM projects AS p
-	// INNER JOIN users AS u ON p.user_id=u.user_id
-  // WHERE LOWER ( title ) LIKE '%${keyword}%' 
-  //   OR LOWER (development) LIKE '%${keyword}%' 
+  // title, date, development, description, done, todo, img_small, img_big, p.github, site
+  // FROM projects AS p
+  // INNER JOIN users AS u ON p.user_id=u.user_id
+  // WHERE LOWER ( title ) LIKE '%${keyword}%'
+  //   OR LOWER (development) LIKE '%${keyword}%'
   //   OR LOWER (description) LIKE '%${keyword}%'
   //   OR LOWER (u.firstname) LIKE '%${keyword}%'
   //   OR LOWER (u.lastname) LIKE '%${keyword}%'`,

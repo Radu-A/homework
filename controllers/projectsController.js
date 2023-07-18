@@ -9,6 +9,9 @@ const getProjects = async (req, res) => {
     } else if (req.query.project_id) {
       data = await projects.getProjectByID(req.query.project_id);
       res.status(200).json(data);
+    } else if (req.query.email) {
+      data = await projects.getProjectsByEmail(req.query.email);
+      res.status(200).json(data);
     } else {
       data = await projects.getAllProjects();
       res.status(200).json(data);

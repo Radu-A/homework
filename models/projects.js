@@ -99,6 +99,23 @@ const getProjectsByUser = async (user_id) => {
   }
   return result;
 };
+const getProjectsByEmail = async (email) => {
+  let client, result;
+  try {
+    client = await pool.connect();
+    const data = await client.query(projectQueries.getProjectsByEmail, [
+      email,
+    ]);
+    result = data.rows;
+    console.log(result);
+  } catch (err) {
+    console.log(err);
+    throw err;
+  } finally {
+    client.release();
+  }
+  return result;
+};
 
 const getProjectsByKeyword = async (keyword) => {
   let client, result;
@@ -206,6 +223,7 @@ module.exports = {
   getProjectsDevelopmentOrder,
   getProjectByID,
   getProjectsByUser,
+  getProjectsByEmail,
   getProjectsByKeyword,
   createProject,
   deleteProject,

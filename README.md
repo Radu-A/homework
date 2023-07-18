@@ -1,6 +1,6 @@
-# PokeApp
+# Homework
 
-This is a web where you can search pokemon's and see their characteristics.
+A place where the students of The Bridge can upload share their projects.
 
 ## Table of contents
 
@@ -35,55 +35,63 @@ You need to install npm. To install the latest version:
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/Radu-A/pokeapp
+   git clone https://github.com/Radu-A/homework
    ```
-2. Install NPM packages
+2. Install NPM packages on the root directory
    ```sh
    npm install
    ```
-3. Run the app
+3. Install NPM packages on "client" directory
+   ```js
+   npm install
+   ```
+3. Run the node server on the root directory
+   ```js
+   npm start
+   ```
+3. Run react aplication on "client" directory
    ```js
    npm start
    ```
 
 ### Usage
 
-- Home: Introduce the name of the pokemon and press "search". If you click on the name of the pokemon you will go to his details view.
-- New: Fill all the fields and press "Add".
+- Home: You can search and navigate throw the projects. If you click on the name of a directory you can see his details
+- Sign in / Log in: Try to sign in usign your github account.
+- My Projects: The place to create new projects or delete the old ones.
 
 ## Overview
 
 ### The challenge
 
-Phase 1
-- Create these components: Search, List, Card
-- Sibling comunication between Search and List
-- HTTP request to https://pokeapi.co/
-- Reset the value of the input after the search
+Develop an entire web aplication with PostgreSQL, Node and React
+
+Phase 1 
+- A board with all the projects
+- A detail view of the projects
+- A user section to create or delete projects
+- A sign up form where you can link some data from your github account
+- A log in view
+
 Phase 2
-- Debounce: After 3 seconds from the last typing, the search will be carried out
-- Routing with react-router-dom:
-  "/" Home
-  "/new" New
-  "/pokemon?name=name" Details
-- "New": a form to create a new pokemon
-- "Details": a page with more specific data of one pokemon
+- Real authentication with Github
+- Posibility to vote projects
 
 ### Screenshot
 
-![](./public/screenshots/pokeapp-home.png)
-![](./public/screenshots/pokeapp-details.png)
-![](./public/screenshots/pokeapp-new.png)
+![](./assets/screenshot-smartphone.jpg)
+![](./assets/screenshot-desktop.jpg)
 
 ### Links
 
-- Solution URL: (https://github.com/Radu-A/pokeapp)
-- Live Site URL: (https://incomparable-macaron-afd876.netlify.app/)
+- Solution URL: (https://github.com/Radu-A/homework)
 
 ## My process
 
 ### Built with
 
+- PostgreSQL and Render
+- Node Express
 - Semantic HTML5 markup
 - SASS custom properties
 - Flexbox
@@ -91,19 +99,27 @@ Phase 2
 - [React](https://reactjs.org/) - JS library
 - [Material UI](https://mui.com/) - For styles
 
-### What I learned
+### Key points
 
-- useState and useEffect: I got used to work with the state of a variable and how you can use it to render components.
-- SASS: not only how to use it but also how to install it and create directories and files.
-- How HTTP request works on React. Mainly, deal with asynchrony when you are rendering data from a request to an API.
-- How to use useContext. 
-- Introduce and validate data with "react-hook-form".
-- Use keywords from url with "react-router-dom".
+Back-end
+- Data model design with Entity-Relationship Diagram
+- Create and deploy a PostgreSQL Data Base
+- Construct the CRUD with Node and PostgreSQL
+- Routing with Node and Express
+- Reset the value of the input after the search
+Front-end
+- Build the React components structure
+- Functionality with React states and lifecycle of their components
+- Implement Hooks to enlarge the potential of the App
+- Routing with React Router Dom
+- Styles with SASS
+- MUI components
 
 ### Continued development
 
-- Implement Firebase to save favorites
-- Implement Firebase Auth
+- Authentication
+- Concurrently
+- Deploy
 
 ### Useful resources
 
