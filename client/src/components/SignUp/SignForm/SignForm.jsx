@@ -3,12 +3,18 @@ import { useForm } from "react-hook-form";
 import { UserLoggedContext } from "../../../context/userLoggedContext";
 import { useNavigate } from "react-router-dom";
 
-const SignForm = ({githubInfo}) => {
-
+const SignForm = ({ githubInfo }) => {
   const { userLogged, updateUserLogged } = useContext(UserLoggedContext);
   const navigate = useNavigate();
-  const [form, setForm] = useState()
-  
+  const [form, setForm] = useState();
+
+  const values = {
+    photo: githubInfo.photo,
+    firstname: githubInfo.firstname,
+    lastname: githubInfo.lastname,
+    github: githubInfo.github,
+  };
+
   const {
     register,
     handleSubmit,
@@ -16,14 +22,15 @@ const SignForm = ({githubInfo}) => {
   } = useForm({
     defaultValues: {
       photo: githubInfo.photo,
-      firsname: githubInfo.firsname,
+      firstname: githubInfo.firstname,
       lastname: githubInfo.lastname,
       github: githubInfo.github,
     },
+    values,
   });
 
-  console.log('datos github')
-  console.log(githubInfo.firsname)
+  console.log("datos github");
+  console.log(githubInfo.firsname);
 
   const onSubmit = (data) => {
     let newUser = {

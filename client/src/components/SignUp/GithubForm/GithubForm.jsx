@@ -9,14 +9,14 @@ const GithubForm = ({ setGithubInfo }) => {
       try {
         const resp = await fetch(`https://api.github.com/users/${githubName}`);
         const data = await resp.json(resp);
-        const nameArray = data.name.split(' ');
-        const firsname = nameArray[0];
+        const nameArray = data.name.split(" ");
+        const firstname = nameArray[0];
         const lastname = nameArray[1];
         const githubData = {
           photo: data.avatar_url,
           github: data.html_url,
-          firsname: firsname,
-          lastname: lastname
+          firstname: firstname,
+          lastname: lastname,
         };
         setGithubInfo(githubData);
       } catch (error) {
