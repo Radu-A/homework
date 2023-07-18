@@ -1,6 +1,6 @@
 # Homework
 
-A place where the students of The Bridge can upload share their projects.
+A place where the students of The Bridge can share their projects.
 
 ## Table of contents
 

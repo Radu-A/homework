@@ -54,10 +54,9 @@ const getProjecsByKeyword = async (req, res) => {
 
 const createProject = async (req, res) => {
   console.log("Check new user data: ", req.body);
-  console.log("This is date");
-  console.log(req.body.date);
   const nowDate = new Date();
   let date = "";
+
   if (nowDate.getMonth() + 1 < 10) {
     date =
       nowDate.getFullYear() +
@@ -72,7 +71,9 @@ const createProject = async (req, res) => {
       (nowDate.getMonth() + 1) +
       "-" +
       nowDate.getDate();
-  }
+  }  
+  console.log("This is date");
+  console.log(date);
   let newProject = {
     user_id: req.body.user_id,
     title: req.body.title,

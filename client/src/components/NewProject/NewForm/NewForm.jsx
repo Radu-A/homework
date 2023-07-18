@@ -2,16 +2,20 @@ import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useContext } from "react";
 import { TitleContext } from "../../../context/titleContext";
+import { useNavigate } from "react-router-dom";
 
 // https://api.github.com/users/${username}
 
 const NewForm = ({ user }) => {
+  const navigate = useNavigate();
 
   const { title, updateTitle } = useContext(TitleContext);
 
-  useEffect(()=>{
-    updateTitle('New Project');
-  }, [])
+  useEffect(() => {
+    console.log("cargando New Project");
+    console.log(user);
+    updateTitle("New Project");
+  }, []);
 
   const {
     register,
@@ -19,27 +23,29 @@ const NewForm = ({ user }) => {
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
+    console.log("onsubmit");
+    console.log(data);
+    console.log(user.user_id);
     let newProject = {
-      "user_id": user.user_id,
-      "title": data.title,
-      "development": data.development,
-      "description": data.description,
-      "done": data.done,
-      "todo": data.todo,
-      "img_small": data.img_small,
-      "img_big": data.img_big,
-      "github": data.github,
-      "site": data.site
-      }
+      user_id: user.user_id,
+      title: data.title,
+      development: data.development,
+      description: data.description,
+      done: data.done,
+      todo: data.todo,
+      img_small: data.img_small,
+      img_big: data.img_big,
+      github: data.github,
+      site: data.site,
+    };
 
-    fetch(`http://localhost:3000/api/projects`,
-    {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(newProject)
+    fetch(`http://localhost:3000/api/projects`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(newProject),
     })
-    .then(window.location.reload())
-    .catch(error=>console.log(error));
+      .then(console.log(newProject))
+      .catch((error) => console.log(error));
     console.log(newProject);
   };
   console.log(errors);
@@ -70,13 +76,13 @@ const NewForm = ({ user }) => {
           <textarea {...register("todo", { required: true, max: 549 })} />
           <input
             type="text"
-            placeholder="Screenshot small"
-            {...register("screenshot small", { required: true })}
+            placeholder="img_small"
+            {...register("img_small", { required: true })}
           />
           <input
             type="text"
-            placeholder="Screenshot big"
-            {...register("screenshot big", { required: true, max: 44 })}
+            placeholder="img_big"
+            {...register("img_big", { required: true, max: 44 })}
           />
           <input
             type="text"
@@ -88,7 +94,7 @@ const NewForm = ({ user }) => {
             placeholder="Site"
             {...register("site", { required: true, max: 45 })}
           />
-          <input type="submit" value="Create"/>
+          <input type="submit" value="Create" />
         </form>
       </section>
     </>
