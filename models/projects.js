@@ -7,7 +7,8 @@ const getAllProjects = async () => {
     client = await pool.connect();
     const data = await client.query(projectQueries.getAllProjects);
     result = data.rows;
-    console.log(result);
+    // console.log(result);
+    console.log('getALlProjects')
   } catch (err) {
     console.log(err);
     throw err;
@@ -23,7 +24,7 @@ const getProjectsDateOrder = async () => {
     client = await pool.connect();
     const data = await client.query(projectQueries.getProjectsDateOrder);
     result = data.rows;
-    console.log(result);
+    // console.log(result);
   } catch (err) {
     console.log(err);
     throw err;
@@ -39,7 +40,7 @@ const getProjectsCurseOrder = async () => {
     client = await pool.connect();
     const data = await client.query(projectQueries.getProjectsCurseOrder);
     result = data.rows;
-    console.log(result);
+    // console.log(result);
   } catch (err) {
     console.log(err);
     throw err;
@@ -54,7 +55,7 @@ const getProjectsDevelopmentOrder = async () => {
     client = await pool.connect();
     const data = await client.query(projectQueries.getProjectsDevelopmentOrder);
     result = data.rows;
-    console.log(result);
+    // console.log(result);
   } catch (err) {
     console.log(err);
     throw err;
@@ -72,7 +73,7 @@ const getProjectByID = async (project_id) => {
       project_id,
     ]);
     result = data.rows;
-    console.log(result);
+    // console.log(result);
   } catch (err) {
     console.log(err);
     throw err;
@@ -90,7 +91,7 @@ const getProjectsByUser = async (user_id) => {
       user_id,
     ]);
     result = data.rows;
-    console.log(result);
+    // console.log(result);
   } catch (err) {
     console.log(err);
     throw err;
@@ -103,11 +104,9 @@ const getProjectsByEmail = async (email) => {
   let client, result;
   try {
     client = await pool.connect();
-    const data = await client.query(projectQueries.getProjectsByEmail, [
-      email,
-    ]);
+    const data = await client.query(projectQueries.getProjectsByEmail, [email]);
     result = data.rows;
-    console.log(result);
+    // console.log(result);
   } catch (err) {
     console.log(err);
     throw err;
@@ -133,7 +132,7 @@ const getProjectsByKeyword = async (keyword) => {
       OR LOWER (u.firstname) LIKE '%${keyword}%'
       OR LOWER (u.lastname) LIKE '%${keyword}%'`);
     result = data.rows;
-    console.log(result);
+    // console.log(result);
   } catch (err) {
     console.log(err);
     throw err;

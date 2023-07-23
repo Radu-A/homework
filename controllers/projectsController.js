@@ -53,7 +53,6 @@ const getProjecsByKeyword = async (req, res) => {
 };
 
 const createProject = async (req, res) => {
-  console.log("Check new user data: ", req.body);
   const nowDate = new Date();
   let date = "";
 

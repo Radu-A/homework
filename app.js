@@ -37,17 +37,6 @@ app.use("/auth", authRouter);
 
 app.use("/test", testRouter);
 
-app.get("/logintest", (req, res) => {
-  const token = jwt.sign({ id: 7, role: "captain" }, "YOUR_SECRET_KEY");
-  return res
-    .cookie("access_token", token, {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-    })
-    .status(200)
-    .json({ message: "Logged in successfully 😊 👌" });
-});
-
 // Set localhost
 const server = app.listen(port, () => {
   console.log(`****Your host is: http://localhost${port}`);

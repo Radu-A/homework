@@ -2,8 +2,8 @@ POST http://localhost:3000/auth/login
 Content-Type: application/json
 
 {
-    "username": "john",
-    "password": "password123admin"
+    "email": "saana.toivonen@example.com",
+    "password": "saana.toivonen@example.com"
 }
 
 ### 
@@ -12,8 +12,8 @@ POST http://localhost:3000/auth/login
 Content-Type: application/json
 
 {
-    "username": "anna",
-    "password": "password123member"
+    "email": "debra.rodriquez@example.com",
+    "password": "debra.rodriquez@example.com"
 }
 
 ### 

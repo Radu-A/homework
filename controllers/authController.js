@@ -1,6 +1,5 @@
 const express = require("express");
 const jwt = require("jsonwebtoken");
-const config = require("../utils/config");
 require("dotenv").config();
 
 const app = express();
@@ -9,45 +8,46 @@ const tokenSecret = process.env.TOKEN_SECRET;
 
 const users = [
   {
-    username: "john",
-    password: "password123admin",
+    email: "saana.toivonen@example.com",
+    password: "saana.toivonen@example.com",
     role: "admin",
   },
   {
-    username: "anna",
-    password: "password123member",
+    email: "debra.rodriquez@example.com",
+    password: "debra.rodriquez@example.com",
     role: "member",
   },
 ];
 
-app.set("key", config.key);
-
 const getToken = (req, res) => {
-  const { username, password } = req.body;
+  const { email, password } = req.body;
   console.log(req.body);
 
   const user = users.find((u) => {
-    return u.username === username && u.password === password;
+    return u.email === email && u.password === password;
   });
 
   console.log(user);
 
   if (user) {
     const token = jwt.sign(
-      { username: user.username, role: user.role },
+      { username: user.email, role: user.role },
       tokenSecret,
       {
         expiresIn: "7d",
       }
     );
 
-    res.status(201).cookie("access-token", token, {
-      httpOnly: true,
-      simesite: "lax"
-    }).json({
-      message: 'User loged',
-      token,
-    })
+    res
+      .status(201)
+      .cookie("access-token", token, {
+        httpOnly: true,
+        simesite: "lax",
+      })
+      .json({
+        message: "User loged",
+        token,
+      });
 
     // res.json({
     //   message: 'User loged',

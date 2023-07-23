@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { UserLoggedContext } from "../../context/userLoggedContext";
-import { Navigate, redirect, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Title from "../Title/Title";
 import { TitleContext } from "../../context/titleContext";
 
@@ -10,7 +10,6 @@ const Login = () => {
   const { title, updateTitle } = useContext(TitleContext);
   const { userLogged, updateUserLogged } = useContext(UserLoggedContext);
   const [message, setMessage] = useState("");
-  const [userUrl, setUserUrl] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -40,9 +39,9 @@ const Login = () => {
     };
     tryLogin();
 
-    // updateUserLogged(data.email);
-    // console.log(userLogged);
-    // navigate("/user");
+    updateUserLogged(data.email);
+    console.log(userLogged);
+    navigate("/user");
   };
   console.log(errors);
 
@@ -53,8 +52,8 @@ const Login = () => {
         <form className="login-form" onSubmit={handleSubmit(onSubmit)}>
           <input
             type="text"
-            placeholder="username"
-            {...register("username", { required: true })}
+            placeholder="email"
+            {...register("email", { required: true })}
           />
           <input
             type="text"
