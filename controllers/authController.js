@@ -1,40 +1,54 @@
 const express = require("express");
 const jwt = require("jsonwebtoken");
 const config = require("../utils/config");
+require("dotenv").config();
 
 const app = express();
 
-app.set('key', config.key)
+const tokenSecret = process.env.TOKEN_SECRET;
 
-const getJWT = (req, res) => {
-  if (req.body.user === "user" && req.body.password === "password") {
-    const payload = {
-      check: true,
-      email: req.body.email
-    };
-    const token = jwt.sign(payload, app.get('key'), {
-      expiresIn: 1440000,
+const users = [
+  {
+    username: "john",
+    password: "password123admin",
+    role: "admin",
+  },
+  {
+    username: "anna",
+    password: "password123member",
+    role: "member",
+  },
+];
+
+app.set("key", config.key);
+
+const getToken = (req, res) => {
+  const { username, password } = req.body;
+  console.log(req.body);
+
+  const user = users.find((u) => {
+    return u.username === username && u.password === password;
+  });
+
+  console.log(user);
+
+  if (user) {
+    const token = jwt.sign(
+      { username: user.username, role: user.role },
+      tokenSecret,
+      {
+        expiresIn: "7d",
+      }
+    );
+
+    res.json({
+      token,
     });
-
-    // res.json({
-    //   message: "Successful authentication",
-    //   token: token,
-    // });
-
-    return res
-      .cookie("access_token", token, {
-        httpOnly: true,
-        secure: process.env.NODE_ENV === "production",
-      })
-      .status(200)
-      .json({ message: "Logged in successfully 😊 👌" });
-    
-    console.log(token);
   } else {
-    res.json({ mensaje: "Wrong user or password" });
+    res.send("Username or password incorrect, nerd");
   }
 };
 
 module.exports = {
-    getJWT
-}
+  getToken,
+};
