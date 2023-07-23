@@ -8,6 +8,7 @@ CREATE TABLE users (
 	curse varchar(45),
 	github varchar(45)
 );
+
 --Projects table
 CREATE TABLE projects (
 	project_id serial NOT NULL PRIMARY KEY,
@@ -15,13 +16,13 @@ CREATE TABLE projects (
 	title varchar(100) NOT NULL,
 	date varchar(45) NOT NULL,
 	development varchar(45) NOT NULL,
-	description varchar(300) NOT NULL,
-	done varchar(550) NOT NULL, 
-	todo varchar(550) NOT NULL, 
-	img_small varchar(100),
-	img_big varchar(45),
-	github varchar(45),
-	site varchar(45),
+	description varchar(750) NOT NULL,
+	done varchar(1000) NOT NULL, 
+	todo varchar(1000) NOT NULL, 
+	img_small varchar(200),
+	img_big varchar(200),
+	github varchar(200),
+	site varchar(200),
 	FOREIGN KEY (user_id) REFERENCES users(user_id)
 	ON DELETE CASCADE
 );

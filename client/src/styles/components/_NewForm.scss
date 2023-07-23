@@ -1,7 +1,13 @@
 .new-form-section {
     padding: 3rem;
+    width: 250px;
 }
 
 .new-form > * {
     width: 100%;
+}
+
+.new-form textarea {
+    width: 250px;
+    height: 200px;
 }

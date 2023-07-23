@@ -2,11 +2,11 @@ import { BrowserRouter } from "react-router-dom";
 import { useState } from "react";
 import { TitleContext } from "./context/titleContext";
 import { UserLoggedContext } from "./context/userLoggedContext";
+import { UserContext } from "./context/userContext";
 // import './App.css';
 import Main from "./components/Main/Main";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
-import { UserContext } from "./context/userContext";
 
 function App() {
   // Context for title state
