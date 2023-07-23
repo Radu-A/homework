@@ -6,15 +6,16 @@ import Title from "../Title/Title";
 import { TitleContext } from "../../context/titleContext";
 
 const Login = () => {
-  const {title, updateTitle} = useContext(TitleContext);
+  // This change the text of Title component
+  const { title, updateTitle } = useContext(TitleContext);
   const { userLogged, updateUserLogged } = useContext(UserLoggedContext);
   const [message, setMessage] = useState("");
   const [userUrl, setUserUrl] = useState("");
   const navigate = useNavigate();
 
-  useEffect(()=>{
-    updateTitle('Log In');
-  }, [])
+  useEffect(() => {
+    updateTitle("Log In");
+  }, []);
 
   const {
     register,
@@ -22,30 +23,26 @@ const Login = () => {
     formState: { errors },
   } = useForm(UserLoggedContext);
   const onSubmit = (data) => {
+    console.log(data);
+    const tryLogin = async () => {
+      try {
+        const resp = await fetch(`/auth/login`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data),
+        });
+        const respData = await resp.json();
+        console.log(respData);
+        setMessage(respData.message);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    tryLogin();
 
-    // console.log(data);
-    // const tryLogin = async ()=> {
-    //   try {
-    //     const resp = await fetch(`/auth/login`,
-    //     {
-    //       method: 'POST',
-    //       headers: { 'Content-Type': 'application/json' },
-    //       body: JSON.stringify(data)
-    //     });
-    //     const respData = await resp.json();
-    //     console.log(respData);
-    //     setMessage(respData.message);
-    //   } catch (error) {
-    //     console.log(error)
-    //   }
-    // }
-    // tryLogin();
-    // This change the state of userLogged and the routes you can visit
-
-    updateUserLogged(data.email);
-    console.log(userLogged);
-    // setUserUrl(`/user?email=${data.email}`)
-    navigate('/user');
+    // updateUserLogged(data.email);
+    // console.log(userLogged);
+    // navigate("/user");
   };
   console.log(errors);
 
@@ -56,8 +53,8 @@ const Login = () => {
         <form className="login-form" onSubmit={handleSubmit(onSubmit)}>
           <input
             type="text"
-            placeholder="email"
-            {...register("email", { required: true })}
+            placeholder="username"
+            {...register("username", { required: true })}
           />
           <input
             type="text"

@@ -41,9 +41,18 @@ const getToken = (req, res) => {
       }
     );
 
-    res.json({
+    res.status(201).cookie("access-token", token, {
+      httpOnly: true,
+      simesite: "lax"
+    }).json({
+      message: 'User loged',
       token,
-    });
+    })
+
+    // res.json({
+    //   message: 'User loged',
+    //   token,
+    // });
   } else {
     res.send("Username or password incorrect, nerd");
   }
