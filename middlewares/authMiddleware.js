@@ -18,13 +18,13 @@ const checkEmailAndPassword = async (req, res, next) => {
         req.email = email;
         console.log("Correct password, user logged");
         next();
-      // If the password is wrong
+        // If the password is wrong
       } else {
         res.status(400).json({
-          message: "Incorrect user or password"
+          message: "Incorrect user or password",
         });
       }
-    // If the user doesn't exists in the system
+      // If the user doesn't exists in the system
     } else {
       res.status(401).json({
         message: "Email doesn't exists in the system",
@@ -35,25 +35,34 @@ const checkEmailAndPassword = async (req, res, next) => {
   }
 };
 
-const authenticateJWT = (req, res, next) => {
-  const authHeader = req.headers.authorization;
+const authenticateToken = (req, res, next) => {
+  // // const authHeader = req.headers.authorization;
+  const token = req.cookies["access-token"];
+  console.log(token);
+  console.log(req.body);
+  // console.log("Taking token from cookie");
+  // console.log(token);
+  // if (token) {
+  //   // const token = authHeader.split(" ")[1];
+  //   jwt.verify(token, tokenSecret, (err, user) => {
+  //     if (err) {
+  //       return res.sendStatus(403).json({
+  //         message: "The token is incorrect",
+  //         user: user,
+  //       });
+  //     }
 
-  if (authHeader) {
-    const token = authHeader.split(" ")[1];
-    jwt.verify(token, tokenSecret, (err, user) => {
-      if (err) {
-        return res.sendStatus(403);
-      }
-
-      req.user = user;
-      next();
-    });
-  } else {
-    res.sendStatus(401);
-  }
+  //     req.user = user;
+  //     next();
+  //   });
+  // } else {
+  //   res.sendStatus(401).json({
+  //     message: "Token not provided",
+  //   });
+  // }
 };
 
 module.exports = {
   checkEmailAndPassword,
-  authenticateJWT,
+  authenticateToken,
 };

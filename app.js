@@ -27,8 +27,8 @@ app.use(
 
 // Middlewares
 //Enable all CORS requests
-// app.use(cors({credentials: false, origin: process.env.FRONTEND_DOMAIN}));
-app.use(cors());
+app.use(cors({credentials: true}));
+// app.use(cors());
 app.use(express.json());
 app.use(cookieParser()); //Better access to cookies
 app.use("/api/users", usersRouter);

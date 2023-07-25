@@ -21,6 +21,7 @@ const DeleteButton = ({ project }) => {
     try {
       const resp = await fetch(`http://localhost:3000/api/projects`, {
         method: "DELETE",
+        credentials: "include",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           project_id: project.project_id,
@@ -31,7 +32,6 @@ const DeleteButton = ({ project }) => {
       console.log(error);
     }
     setOpen(false);
-    
   };
 
   return (

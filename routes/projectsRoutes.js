@@ -1,5 +1,6 @@
 const express = require("express");
 const projectsController = require("../controllers/projectsController");
+const authMiddleware = require("../middlewares/authMiddleware");
 
 const projectsRouter = express.Router();
 
@@ -8,6 +9,10 @@ projectsRouter.get("/", projectsController.getProjects);
 projectsRouter.get("/order", projectsController.getOrderProjects);
 projectsRouter.get("/search", projectsController.getProjecsByKeyword);
 projectsRouter.post("/", projectsController.createProject);
-projectsRouter.delete("/", projectsController.deleteProject);
+projectsRouter.delete(
+  "/",
+  authMiddleware.authenticateToken,
+  projectsController.deleteProject
+);
 
 module.exports = projectsRouter;

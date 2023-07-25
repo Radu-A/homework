@@ -114,6 +114,8 @@ const createProject = async (req, res) => {
 // }
 
 const deleteProject = async (req, res) => {
+  console.log('req.body en deleteProject')
+  console.log(req.body.project_id)
   try {
     let deleteInfo = await projects.deleteProject(req.body.project_id);
 

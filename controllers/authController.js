@@ -17,6 +17,16 @@ const users = [
     password: "debra.rodriquez@example.com",
     role: "member",
   },
+  {
+    email: "aaron.toivonen@example.com",
+    password: "aaron.toivonen@example.com",
+    role: "member",
+  },
+  {
+    email: "sandrine.toivonen@example.com",
+    password: "sandrine.toivonen@example.com",
+    role: "member",
+  },
 ];
 
 const getToken = (req, res) => {
@@ -41,7 +51,7 @@ const getToken = (req, res) => {
     res
       .status(201)
       .cookie("access-token", token, {
-        httpOnly: true,
+        // httpOnly: true,
         simesite: "lax",
       })
       .json({
