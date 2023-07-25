@@ -36,30 +36,28 @@ const checkEmailAndPassword = async (req, res, next) => {
 };
 
 const authenticateToken = (req, res, next) => {
-  // // const authHeader = req.headers.authorization;
   const token = req.cookies["access-token"];
   console.log(token);
   console.log(req.body);
-  // console.log("Taking token from cookie");
-  // console.log(token);
-  // if (token) {
-  //   // const token = authHeader.split(" ")[1];
-  //   jwt.verify(token, tokenSecret, (err, user) => {
-  //     if (err) {
-  //       return res.sendStatus(403).json({
-  //         message: "The token is incorrect",
-  //         user: user,
-  //       });
-  //     }
+  console.log("Taking token from cookie");
+  console.log(token);
+  if (token) {
+    jwt.verify(token, tokenSecret, (err, user) => {
+      if (err) {
+        return res.sendStatus(403).json({
+          message: "The token is incorrect",
+          user: user,
+        });
+      }
 
-  //     req.user = user;
-  //     next();
-  //   });
-  // } else {
-  //   res.sendStatus(401).json({
-  //     message: "Token not provided",
-  //   });
-  // }
+      req.user = user;
+      next();
+    });
+  } else {
+    res.sendStatus(401).json({
+      message: "Token not provided",
+    });
+  }
 };
 
 module.exports = {

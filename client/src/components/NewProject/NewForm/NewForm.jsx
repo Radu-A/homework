@@ -41,6 +41,7 @@ const NewForm = ({ user }) => {
 
     fetch(`http://localhost:3000/api/projects`, {
       method: "POST",
+      credentials: "include",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(newProject),
     })

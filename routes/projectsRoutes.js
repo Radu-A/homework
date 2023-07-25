@@ -8,7 +8,11 @@ const projectsRouter = express.Router();
 projectsRouter.get("/", projectsController.getProjects);
 projectsRouter.get("/order", projectsController.getOrderProjects);
 projectsRouter.get("/search", projectsController.getProjecsByKeyword);
-projectsRouter.post("/", projectsController.createProject);
+projectsRouter.post(
+  "/",
+  authMiddleware.authenticateToken,
+  projectsController.createProject
+);
 projectsRouter.delete(
   "/",
   authMiddleware.authenticateToken,
