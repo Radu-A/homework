@@ -40,7 +40,7 @@ app.use("/test", testRouter);
 
 // Set localhost
 const server = app.listen(port, () => {
-  console.log(`****Your host is: http://localhost${port}`);
+  console.log(`****Your host is: http://localhost:${port}`);
 });
 
 module.exports = server;
