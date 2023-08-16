@@ -1,6 +1,7 @@
 const projectQueries = require("../queries/project.queries");
 const pool = require("../utils/db_pgsql");
 
+// To get all projects
 const getAllProjects = async () => {
   let client, result;
   try {
@@ -8,7 +9,7 @@ const getAllProjects = async () => {
     const data = await client.query(projectQueries.getAllProjects);
     result = data.rows;
     // console.log(result);
-    console.log('getALlProjects')
+    console.log("getALlProjects");
   } catch (err) {
     console.log(err);
     throw err;
@@ -18,6 +19,7 @@ const getAllProjects = async () => {
   return result;
 };
 
+// To get projects ordered by "date"
 const getProjectsDateOrder = async () => {
   let client, result;
   try {
@@ -34,6 +36,7 @@ const getProjectsDateOrder = async () => {
   return result;
 };
 
+// To get projects ordered by "curse"
 const getProjectsCurseOrder = async () => {
   let client, result;
   try {
@@ -49,6 +52,8 @@ const getProjectsCurseOrder = async () => {
   }
   return result;
 };
+
+// To get projects ordered by "development"
 const getProjectsDevelopmentOrder = async () => {
   let client, result;
   try {
@@ -65,6 +70,7 @@ const getProjectsDevelopmentOrder = async () => {
   return result;
 };
 
+// To get project by "project_id"
 const getProjectByID = async (project_id) => {
   let client, result;
   try {
@@ -83,6 +89,7 @@ const getProjectByID = async (project_id) => {
   return result;
 };
 
+// To get projects by "user_id"
 const getProjectsByUser = async (user_id) => {
   let client, result;
   try {
@@ -100,6 +107,8 @@ const getProjectsByUser = async (user_id) => {
   }
   return result;
 };
+
+// To get projects by "email"
 const getProjectsByEmail = async (email) => {
   let client, result;
   try {
@@ -116,6 +125,7 @@ const getProjectsByEmail = async (email) => {
   return result;
 };
 
+// To get projects by "keyword"
 const getProjectsByKeyword = async (keyword) => {
   let client, result;
   keyword = keyword.toLowerCase();

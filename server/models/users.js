@@ -94,17 +94,17 @@ const deleteUser = async (id)=> {
     return result;
 }
 
-
+// 
 // getAllUsers();
 // getUserById(2);
-const newUser = {
-    email: 'aerozfx.toivonen@example.com',
-    photo: 'https://avatars.githubusercontent.com/u/118265607?v=4',
-    firstname: 'Fernando',
-    lastname: 'Mariño',
-    curse: '23-04',
-    github: 'https://api.github.com/users/aerozfx'
-}
+// const newUser = {
+//     email: 'aerozfx.toivonen@example.com',
+//     photo: 'https://avatars.githubusercontent.com/u/118265607?v=4',
+//     firstname: 'Fernando',
+//     lastname: 'Mariño',
+//     curse: '23-04',
+//     github: 'https://api.github.com/users/aerozfx'
+// }
 // createUser(newUser);
 // deleteUser(6);
 
