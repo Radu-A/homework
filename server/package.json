@@ -11,11 +11,12 @@
     "dev": "concurrently \"nodemon app.js\" \"npm run client\"",
     "install-server": "npm i",
     "install-client": "npm i --prefix ../client",
-    "install-app": "concurrently \"npm run install-server\" \"npm run install-client\""
+    "install-app": "npm i && npm i --prefix ../client"
   },
   "author": "Victor Outeiro",
   "license": "ISC",
   "dependencies": {
+    "concurrently": "^8.2.0",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
@@ -27,7 +28,6 @@
     "uuid": "^9.0.0"
   },
   "devDependencies": {
-    "concurrently": "^8.2.0",
     "morgan": "^1.10.0",
     "nodemon": "^3.0.1"
   }
