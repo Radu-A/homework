@@ -8,7 +8,8 @@
     "server": "node app.js",
     "client": "npm start --prefix ../client",
     "start": "concurrently \"npm run server\" \"npm run client\"",
-    "dev": "concurrently \"nodemon app.js\" \"npm run client\""
+    "dev": "concurrently \"nodemon app.js\" \"npm run client\"",
+    "install-server": ""
   },
   "author": "Victor Outeiro",
   "license": "ISC",
