@@ -33,7 +33,6 @@ const Login = () => {
         console.log(respData);
         setMessage(respData.message);
         updateUserLogged(data.email);
-        console.log(userLogged);
         navigate("/user");
       } catch (error) {
         console.log(error);

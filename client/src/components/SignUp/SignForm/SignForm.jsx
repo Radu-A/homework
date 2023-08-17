@@ -50,13 +50,13 @@ const SignForm = ({ githubInfo }) => {
           body: JSON.stringify(newUser),
         });
         const data = await resp.json();
+        updateUserLogged(newUser.email);
+        navigate("/user");
       } catch (error) {
         console.log(error);
       }
     };
     createUser();
-    updateUserLogged(newUser.email);
-    console.log(newUser.email);
   };
   console.log(errors);
 
