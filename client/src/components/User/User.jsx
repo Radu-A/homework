@@ -1,22 +1,20 @@
-import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { TitleContext } from "../../context/titleContext";
+import { UserContext } from "../../context/userContext";
 import { UserLoggedContext } from "../../context/userLoggedContext";
-
+import Cookies from "js-cookie";
+import jwt_decode from "jwt-decode";
 import UserInfo from "../NewProject/UserInfo/UserInfo";
 import UserList from "./UserList/UserList";
 import Title from "../Title/Title";
-import { UserContext } from "../../context/userContext";
 
 const User = () => {
   const [projectList, setProjectList] = useState([]);
-  // const [user, setUser] = useState({});
-  const [newUrl, setNewUrl] = useState("");
 
-  const { title, updateTitle } = useContext(TitleContext);
-  const { userLogged, updateUserLogged } = useContext(UserLoggedContext);
+  const { updateTitle } = useContext(TitleContext);
+  const { userLogged } = useContext(UserLoggedContext);
   const { user, updateUser } = useContext(UserContext);
 
   useEffect(() => {
@@ -24,9 +22,7 @@ const User = () => {
 
     const getUser = async () => {
       try {
-        const resp = await fetch(
-          `http://localhost:3000/api/users?email=${userLogged}`
-        );
+        const resp = await fetch(`/api/users?email=${userLogged}`);
         const data = await resp.json();
         updateUser(data[0]);
       } catch (error) {
@@ -37,9 +33,7 @@ const User = () => {
 
     const getProjects = async () => {
       try {
-        const resp = await fetch(
-          `http://localhost:3000/api/projects?email=${userLogged}`
-        );
+        const resp = await fetch(`/api/projects?email=${userLogged}`);
         const data = await resp.json();
         setProjectList(data);
       } catch (error) {
@@ -48,6 +42,12 @@ const User = () => {
     };
     getProjects();
   }, [userLogged]);
+
+  useEffect(() => {
+    const token = Cookies.get("access-token");
+    const decodedToken = jwt_decode(token);
+    console.log(decodedToken.user_id);
+  }, []);
 
   return (
     <>

@@ -6,12 +6,12 @@ import Title from "../Title/Title";
 import { TitleContext } from "../../context/titleContext";
 
 const Login = () => {
-  // This change the text of Title component
+  // This context change the text of "Title" component
   const { title, updateTitle } = useContext(TitleContext);
   const { userLogged, updateUserLogged } = useContext(UserLoggedContext);
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
-
+  // This UseEffect change the text of "Title" component
   useEffect(() => {
     updateTitle("Log In");
   }, []);
@@ -22,7 +22,6 @@ const Login = () => {
     formState: { errors },
   } = useForm(UserLoggedContext);
   const onSubmit = (data) => {
-    console.log(data);
     const tryLogin = async () => {
       try {
         const resp = await fetch(`/auth/login`, {
@@ -33,17 +32,15 @@ const Login = () => {
         const respData = await resp.json();
         console.log(respData);
         setMessage(respData.message);
+        updateUserLogged(data.email);
+        console.log(userLogged);
+        navigate("/user");
       } catch (error) {
         console.log(error);
       }
     };
     tryLogin();
-
-    updateUserLogged(data.email);
-    console.log(userLogged);
-    navigate("/user");
   };
-  console.log(errors);
 
   return (
     <>

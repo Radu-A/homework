@@ -1,5 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { UserLoggedContext } from '../../context/userLoggedContext';
 import Home from '../Home/Home';
 import User from '../User/User';
@@ -12,6 +12,10 @@ import SignUp from '../SignUp/SignUp';
 const Main = () => {
 
   const {userLogged, updateUserLogged} = useContext(UserLoggedContext);
+
+  useEffect(()=>{
+
+  }, [userLogged])
 
   return (
     <>

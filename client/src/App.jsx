@@ -23,7 +23,6 @@ function App() {
   const [userLogged, setUserLogged] = useState('');
 
   const updateUserLogged = (email) => {
-    console.log("holi");
     setUserLogged(email);
   };
   const userLoggedData = {
