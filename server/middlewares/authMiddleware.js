@@ -16,7 +16,7 @@ const checkEmailAndPassword = async (req, res, next) => {
       // If the password is correct, next
       if (user.password === password) {
         req.email = email;
-        console.log("Correct password, user logged");
+        req.user_id = user.user_id;
         next();
         // If the password is wrong
       } else {
@@ -35,7 +35,7 @@ const checkEmailAndPassword = async (req, res, next) => {
   }
 };
 
-const authenticateToken = (req, res, next) => {
+const checkToken = (req, res, next) => {
   const token = req.cookies["access-token"];
   console.log(token);
   console.log(req.body);
@@ -62,5 +62,5 @@ const authenticateToken = (req, res, next) => {
 
 module.exports = {
   checkEmailAndPassword,
-  authenticateToken,
+  checkToken,
 };

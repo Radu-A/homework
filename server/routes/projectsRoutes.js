@@ -10,12 +10,12 @@ projectsRouter.get("/order", projectsController.getOrderProjects);
 projectsRouter.get("/search", projectsController.getProjecsByKeyword);
 projectsRouter.post(
   "/",
-  authMiddleware.authenticateToken,
+  authMiddleware.checkToken,
   projectsController.createProject
 );
 projectsRouter.delete(
   "/",
-  authMiddleware.authenticateToken,
+  authMiddleware.checkToken,
   projectsController.deleteProject
 );
 

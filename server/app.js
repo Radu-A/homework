@@ -15,7 +15,6 @@ const port = 3000;
 const usersRouter = require("./routes/usersRoutes");
 const projectsRouter = require("./routes/projectsRoutes");
 const authRouter = require("./routes/authRoutes");
-const testRouter = require("./routes/testRoutes");
 
 // Session
 app.use(
@@ -35,8 +34,6 @@ app.use(cookieParser()); //Better access to cookies
 app.use("/api/users", usersRouter);
 app.use("/api/projects", projectsRouter);
 app.use("/auth", authRouter);
-
-app.use("/test", testRouter);
 
 // Set localhost
 const server = app.listen(port, () => {
