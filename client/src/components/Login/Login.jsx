@@ -31,9 +31,12 @@ const Login = () => {
         });
         const respData = await resp.json();
         console.log(respData);
-        setMessage(respData.message);
-        updateUserLogged(data.email);
-        navigate("/user");
+        if (respData.message === "Correct password, user logged") {
+          updateUserLogged(data.email);
+          navigate("/user");
+        } else {
+          setMessage(respData.message);
+        }
       } catch (error) {
         console.log(error);
       }
@@ -59,7 +62,7 @@ const Login = () => {
 
           <input type="submit" />
         </form>
-        {message && <div>{message}</div>}
+        {message && <div className="login-message-div"><p>{message}</p></div>}
       </section>
     </>
   );

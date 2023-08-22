@@ -21,13 +21,13 @@ const checkEmailAndPassword = async (req, res, next) => {
         // If the password is wrong
       } else {
         res.status(400).json({
-          message: "Incorrect user or password",
+          message: "Incorrect password",
         });
       }
       // If the user doesn't exists in the system
     } else {
       res.status(401).json({
-        message: "Email doesn't exists in the system",
+        message: "There is no user with this email",
       });
     }
   } catch (error) {
@@ -37,10 +37,6 @@ const checkEmailAndPassword = async (req, res, next) => {
 
 const checkToken = (req, res, next) => {
   const token = req.cookies["access-token"];
-  console.log(token);
-  console.log(req.body);
-  console.log("Taking token from cookie");
-  console.log(token);
   if (token) {
     jwt.verify(token, tokenSecret, (err, user) => {
       if (err) {

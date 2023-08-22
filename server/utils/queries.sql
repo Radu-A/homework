@@ -2,6 +2,7 @@
 CREATE TABLE users (
 	user_id serial NOT NULL PRIMARY KEY, 
 	email varchar(45) NOT NULL UNIQUE,
+	password varchar(100) NOT NULL,
 	photo varchar(100) NOT NULL,
 	firstname varchar(45) NOT NULL, 
 	lastname varchar(100),
@@ -16,9 +17,9 @@ CREATE TABLE projects (
 	title varchar(100) NOT NULL,
 	date varchar(45) NOT NULL,
 	development varchar(45) NOT NULL,
-	description varchar(750) NOT NULL,
-	done varchar(1000) NOT NULL, 
-	todo varchar(1000) NOT NULL, 
+	description text NOT NULL,
+	done text NOT NULL, 
+	todo text NOT NULL, 
 	img_small varchar(200),
 	img_big varchar(200),
 	github varchar(200),
@@ -29,20 +30,20 @@ CREATE TABLE projects (
 
 -- Insert users
 INSERT INTO users(
-	email, photo, firstname, lastname, curse, github)
-	VALUES ('saana.toivonen@example.com', 
+	email, password, photo, firstname, lastname, curse, github)
+	VALUES ('saana.toivonen@example.com', 'saana.toivonen@example.com',
 			'https://randomuser.me/api/portraits/women/77.jpg', 
 			'Saana', 'Toivonen', '23-04', 'https://github.com/Saana'),
-			('debra.rodriquez@example.com', 
+			('debra.rodriquez@example.com', 'debra.rodriquez@example.com',
 			'https://randomuser.me/api/portraits/women/35.jpg', 
 			'Debra', 'Rodriquez', '23-04', 'https://github.com/Debra'),
-			('aaron.toivonen@example.com', 
+			('aaron.toivonen@example.com', 'aaron.toivonen@example.com',
 			'https://randomuser.me/api/portraits/men/70.jpg', 
 			'Aaron', 'Fetcher', '23-01', 'https://github.com/Aaron'),
-			('sandrine.toivonen@example.com', 
+			('sandrine.toivonen@example.com', 'sandrine.toivonen@example.com',
 			'https://randomuser.me/api/portraits/women/50.jpg', 
 			'Sandrine', 'Lambert', '23-01', 'https://github.com/Sandrine'),
-			('michal.toivonen@example.com', 
+			('michal.toivonen@example.com', 'michal.toivonen@example.com',
 			'https://randomuser.me/api/portraits/women/77.jpg', 
 			'Michal', 'Toivonen', '23-01', 'https://github.com/Michal');
 -- Insert projects
