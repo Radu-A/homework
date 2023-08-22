@@ -7,8 +7,8 @@ import { TitleContext } from "../../context/titleContext";
 
 const Login = () => {
   // This context change the text of "Title" component
-  const { title, updateTitle } = useContext(TitleContext);
-  const { userLogged, updateUserLogged } = useContext(UserLoggedContext);
+  const { updateTitle } = useContext(TitleContext);
+  const { updateUserLogged } = useContext(UserLoggedContext);
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
   // This UseEffect change the text of "Title" component

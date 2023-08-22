@@ -57,12 +57,12 @@ const getUserByEmail = async (email)=> {
 
 const createUser = async (user)=> {
     let client, result;
-    const {email, photo, firstname, lastname, curse, github} = user;
+    const {email, password, photo, firstname, lastname, curse, github} = user;
     try {
         client = await pool.connect();
         const data = await client.query(
             userQueries.createUser,
-            [email, photo, firstname, lastname, curse, github]
+            [email, password, photo, firstname, lastname, curse, github]
         );
         result = data.rows;
         console.log(result);

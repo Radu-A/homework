@@ -4,9 +4,10 @@ import { UserLoggedContext } from "../../../context/userLoggedContext";
 import { useNavigate } from "react-router-dom";
 
 const SignForm = ({ githubInfo }) => {
-  const { userLogged, updateUserLogged } = useContext(UserLoggedContext);
+  const { updateUserLogged } = useContext(UserLoggedContext);
   const navigate = useNavigate();
-  const [form, setForm] = useState();
+  const [message, setMessage] = useState("");
+  // const [form, setForm] = useState();
 
   const values = {
     photo: githubInfo.photo,
@@ -20,26 +21,38 @@ const SignForm = ({ githubInfo }) => {
     handleSubmit,
     formState: { errors },
   } = useForm({
-    defaultValues: {
-      photo: githubInfo.photo,
-      firstname: githubInfo.firstname,
-      lastname: githubInfo.lastname,
-      github: githubInfo.github,
-    },
     values,
   });
-
-  console.log("datos github");
-  console.log(githubInfo.firsname);
 
   const onSubmit = (data) => {
     let newUser = {
       email: data.email,
+      password: data.password,
       photo: data.photo,
       firstname: data.firstname,
       lastname: data.lastname,
       curse: data.curse,
       github: data.github,
+    };
+
+    const tryLogin = async () => {
+      try {
+        const resp = await fetch(`/auth/login`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data),
+        });
+        const respData = await resp.json();
+        console.log(respData);
+        if (respData.message === "Correct password, user logged") {
+          updateUserLogged(data.email);
+          navigate("/user");
+        } else {
+          setMessage(respData.message);
+        }
+      } catch (error) {
+        console.log(error);
+      }
     };
 
     const createUser = async () => {
@@ -50,8 +63,13 @@ const SignForm = ({ githubInfo }) => {
           body: JSON.stringify(newUser),
         });
         const data = await resp.json();
-        updateUserLogged(newUser.email);
-        navigate("/user");
+        console.log(data);
+        if (data.inserted) {
+          tryLogin();
+          navigate("/user");
+        } else {
+          setMessage(data.message);
+        }
       } catch (error) {
         console.log(error);
       }
@@ -67,6 +85,11 @@ const SignForm = ({ githubInfo }) => {
           type="text"
           placeholder="email"
           {...register("email", { required: true })}
+        />
+        <input
+          type="password"
+          placeholder="password"
+          {...register("password", { required: true })}
         />
         <input
           type="text"
@@ -96,6 +119,7 @@ const SignForm = ({ githubInfo }) => {
 
         <button type="submit">ADD</button>
       </form>
+        {message && <div className="login-message-div"><p>{message}</p></div>}
     </section>
   );
 };

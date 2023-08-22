@@ -1,27 +1,33 @@
-import React, { useContext, useEffect, useState } from "react";
-import homework1 from "../../../assets/homework-1.png";
+import { useContext, useEffect, useState } from "react";
 import { UserLoggedContext } from "../../../context/userLoggedContext";
+import { UserContext } from "../../../context/userContext";
 import { Link } from "react-router-dom";
-// Material UI
+import homework1 from "../../../assets/homework-1.png";
+
+// Mui
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
+import MenuIcon from '@mui/icons-material/Menu';
 import Container from "@mui/material/Container";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
-import { UserContext } from "../../../context/userContext";
 
-const Navbar = () => {
+function Navbar() {
+
+  const {userLogged} = useContext(UserLoggedContext)
+  const {user} = useContext(UserContext)
+
   const [pages, setPages] = useState([]);
   const [settings, setSettigs] = useState([]);
 
-  const { userLogged, updateUserLogged } = useContext(UserLoggedContext);
-  const { user, updateUser } = useContext(UserContext);
+  const [anchorElNav, setAnchorElNav] = useState(null);
+  const [anchorElUser, setAnchorElUser] = useState(null);
 
   useEffect(() => {
     if (userLogged !== "") {
@@ -46,9 +52,6 @@ const Navbar = () => {
     }
   }, [userLogged]);
 
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
-
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
@@ -68,6 +71,21 @@ const Navbar = () => {
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
+          <Typography
+            variant="h6"
+            noWrap
+            component="a"
+            href="/"
+            sx={{
+              mr: 2,
+              display: { xs: "none", md: "flex" },
+              fontFamily: "monospace",
+              fontWeight: 700,
+              letterSpacing: ".3rem",
+              color: "inherit",
+              textDecoration: "none",
+            }}
+          >
           <div className="logo-div">
             <div>
               <img className="logo-div-img" src={homework1} alt="" />
@@ -78,11 +96,53 @@ const Navbar = () => {
               </Link>
             </h1>
           </div>
+          </Typography>
+
+          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+            <IconButton
+              size="large"
+              aria-label="account of current user"
+              aria-controls="menu-appbar"
+              aria-haspopup="true"
+              onClick={handleOpenNavMenu}
+              color="inherit"
+            >
+              <MenuIcon />
+            </IconButton>
+            <Menu
+              id="menu-appbar"
+              anchorEl={anchorElNav}
+              anchorOrigin={{
+                vertical: "bottom",
+                horizontal: "left",
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: "top",
+                horizontal: "left",
+              }}
+              open={Boolean(anchorElNav)}
+              onClose={handleCloseNavMenu}
+              sx={{
+                display: { xs: "block", md: "none" },
+              }}
+            >
+              {pages.map((page) => (
+                page.name === "Sing Up" ?
+                <MenuItem key={page.name} onClick={handleSignUp}>
+                  <Typography textAlign="center">{page.name}</Typography>
+                </MenuItem>:
+                <MenuItem key={page.name} onClick={handleCloseNavMenu}>
+                <Typography textAlign="center">{page.name}</Typography>
+                </MenuItem>
+              ))}
+            </Menu>
+          </Box>
           <Typography
             variant="h5"
             noWrap
             component="a"
-            href=""
+            href="/"
             sx={{
               mr: 2,
               display: { xs: "flex", md: "none" },
@@ -93,9 +153,20 @@ const Navbar = () => {
               color: "inherit",
               textDecoration: "none",
             }}
-          ></Typography>
+          >
+          <div className="logo-div">
+            <div>
+              <img className="logo-div-img" src={homework1} alt="" />
+            </div>
+            <h1>
+              <Link className="nav-link" to="/">
+                Homework
+              </Link>
+            </h1>
+          </div>
+          </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            {pages.map((page) => (
+          {pages.map((page) => (
               <Button
                 key={page.name}
                 onClick={handleCloseNavMenu}
@@ -149,6 +220,5 @@ const Navbar = () => {
       </Container>
     </AppBar>
   );
-};
-
+}
 export default Navbar;

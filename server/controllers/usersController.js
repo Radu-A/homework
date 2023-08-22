@@ -7,8 +7,8 @@ const getUsers = async (req, res) => {
       data = await users.getUserByEmail(req.query.email);
       res.status(200).json(data);
     } else if (req.query.user_id) {
-       data = await users.getUserById(req.query.user_id);
-       res.status(200).json(data); 
+      data = await users.getUserById(req.query.user_id);
+      res.status(200).json(data);
     } else {
       data = await users.getAllUsers();
       res.status(200).json(data);
@@ -23,6 +23,7 @@ const createUser = async (req, res) => {
   console.log("Check new user data: ", req.body);
   const newUser = {
     email: req.body.email,
+    password: req.body.password,
     photo: req.body.photo,
     firstname: req.body.firstname,
     lastname: req.body.lastname,
@@ -32,15 +33,16 @@ const createUser = async (req, res) => {
   try {
     const data = await users.createUser(newUser);
     console.log({
-      msj: `User ${req.body.email} inserted on data base`,
+      message: `User ${req.body.email} inserted on data base`,
     });
     res.status(201).json({
-      msj: `User ${req.body.email} inserted on data base`,
+      message: `User ${req.body.email} inserted on data base`,
+      inserted: true
     });
   } catch (error) {
     console.log(`ERROR: ${error}`);
     res.status(400).json({
-      msj: `ERROR: ${error}`,
+      message: `ERROR: ${error}`,
     });
   }
 };
@@ -60,7 +62,7 @@ const deleteUser = async (req, res) => {
 
     res.status(200).json({
       "user deleted": deleteInfo,
-      msj: "User deleted successfully",
+      message: "User deleted successfully",
     });
   } catch (error) {
     console.log(`Error: ${error}`);

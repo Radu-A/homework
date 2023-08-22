@@ -1,20 +1,20 @@
 const userQueries = {
-    getAllUsers: `SELECT * FROM users`,
-    getUserById: `
+  getAllUsers: `SELECT * FROM users`,
+  getUserById: `
     SELECT * 
         FROM users
         WHERE user_id=$1`,
-    getUserByEmail: `
+  getUserByEmail: `
     SELECT * 
         FROM users
         WHERE email=$1`,
-    createUser: `
+  createUser: `
     INSERT INTO public.users(
-        email, photo, firstname, lastname, curse, github)
-        VALUES ($1, $2, $3, $4, $5, $6)`,
-    deleteUser: `
+        email, password, photo, firstname, lastname, curse, github)
+        VALUES ($1, $2, $3, $4, $5, $6, $7)`,
+  deleteUser: `
     DELETE FROM public.users
-	    WHERE user_id=$1`
-}
+	    WHERE user_id=$1`,
+};
 
 module.exports = userQueries;
