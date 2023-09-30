@@ -39,7 +39,7 @@ const NewForm = ({ user }) => {
       site: data.site,
     };
 
-    fetch(`http://localhost:3000/api/projects`, {
+    fetch(`https://homework-server-gzii.onrender.com/api/projects`, {
       method: "POST",
       credentials: "include",
       headers: { "Content-Type": "application/json" },

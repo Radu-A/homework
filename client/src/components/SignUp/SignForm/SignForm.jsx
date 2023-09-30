@@ -44,7 +44,7 @@ const SignForm = ({ githubInfo }) => {
 
     const createUser = async () => {
       try {
-        const resp = await fetch(`http://localhost:3000/api/users`, {
+        const resp = await fetch(`https://homework-server-gzii.onrender.com/api/users`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(newUser),

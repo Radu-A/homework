@@ -23,7 +23,7 @@ const Project = () => {
     const getProject = async () => {
       try {
         const resp = await fetch(
-          `http://localhost:3000/api/projects?project_id=${projectId}`
+          `https://homework-server-gzii.onrender.com/api/projects?project_id=${projectId}`
         );
         const data = await resp.json();
         setProject(data[0]);

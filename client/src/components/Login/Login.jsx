@@ -25,7 +25,7 @@ const Login = () => {
     console.log(data);
     const tryLogin = async () => {
       try {
-        const resp = await fetch(`/auth/login`, {
+        const resp = await fetch(`https://homework-server-gzii.onrender.com/auth/login`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(data),

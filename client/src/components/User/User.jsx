@@ -25,7 +25,7 @@ const User = () => {
     const getUser = async () => {
       try {
         const resp = await fetch(
-          `http://localhost:3000/api/users?email=${userLogged}`
+          `https://homework-server-gzii.onrender.com/api/users?email=${userLogged}`
         );
         const data = await resp.json();
         updateUser(data[0]);

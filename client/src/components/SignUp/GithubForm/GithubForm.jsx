@@ -7,7 +7,7 @@ const GithubForm = ({ setGithubInfo }) => {
   useEffect(() => {
     const getGithubInfo = async () => {
       try {
-        const resp = await fetch(`https://api.github.com/users/${githubName}`);
+        const resp = await fetch(`https://homework-server-gzii.onrender.com/users/${githubName}`);
         const data = await resp.json(resp);
         const nameArray = data.name.split(" ");
         const firstname = nameArray[0];
