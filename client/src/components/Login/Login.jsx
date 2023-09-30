@@ -25,11 +25,14 @@ const Login = () => {
     console.log(data);
     const tryLogin = async () => {
       try {
-        const resp = await fetch(`https://homework-server-gzii.onrender.com/auth/login`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(data),
-        });
+        const resp = await fetch(
+          `https://homework-server-gzii.onrender.com/auth/login`,
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data),
+          }
+        );
         const respData = await resp.json();
         console.log(respData);
         setMessage(respData.message);
