@@ -22,7 +22,9 @@ const User = () => {
 
     const getUser = async () => {
       try {
-        const resp = await fetch(`/api/users?email=${userLogged}`);
+        const resp = await fetch(
+          `/api/users?email=${userLogged}`
+        );
         const data = await resp.json();
         updateUser(data[0]);
       } catch (error) {
@@ -33,7 +35,9 @@ const User = () => {
 
     const getProjects = async () => {
       try {
-        const resp = await fetch(`/api/projects?email=${userLogged}`);
+        const resp = await fetch(
+          `/api/projects?email=${userLogged}`
+        );
         const data = await resp.json();
         setProjectList(data);
       } catch (error) {
