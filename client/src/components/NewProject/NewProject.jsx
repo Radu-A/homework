@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import Title from "../Title/Title";
 import NewForm from "./NewForm/NewForm";
 import UserInfo from "./UserInfo/UserInfo";
@@ -13,7 +13,7 @@ const NewProject = () => {
     const getUser = async () => {
       try {
         const resp = await fetch(
-          `http://localhost:3000/api/users?email=${userLogged}`
+          `https://homework-server-gzii.onrender.com/api/users?email=${userLogged}`
         );
         const data = await resp.json();
         setUser(data[0]);
