@@ -29,6 +29,7 @@ const Login = () => {
           `https://homework-server-gzii.onrender.com/auth/login`,
           {
             method: "POST",
+            credentials: "include",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(data),
           }
