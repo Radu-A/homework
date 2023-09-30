@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { UserLoggedContext } from "../../context/userLoggedContext";
 import { useNavigate } from "react-router-dom";
@@ -62,7 +62,11 @@ const Login = () => {
 
           <input type="submit" />
         </form>
-        {message && <div className="login-message-div"><p>{message}</p></div>}
+        {message && (
+          <div className="login-message-div">
+            <p>{message}</p>
+          </div>
+        )}
       </section>
     </>
   );

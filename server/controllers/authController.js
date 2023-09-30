@@ -35,7 +35,7 @@ const getToken = (req, res) => {
 const deleteToken = (req, res) => {
   console.log("deleteToken");
   res.clearCookie("access-token").clearCookie("user-logged").json({
-    message: "Session closed"
+    message: "Session closed",
   });
 };
 

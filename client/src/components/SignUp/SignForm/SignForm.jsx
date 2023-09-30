@@ -119,7 +119,11 @@ const SignForm = ({ githubInfo }) => {
 
         <button type="submit">ADD</button>
       </form>
-        {message && <div className="login-message-div"><p>{message}</p></div>}
+      {message && (
+        <div className="login-message-div">
+          <p>{message}</p>
+        </div>
+      )}
     </section>
   );
 };

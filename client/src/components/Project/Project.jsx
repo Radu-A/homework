@@ -12,9 +12,9 @@ const Project = () => {
 
   const { title, updateTitle } = useContext(TitleContext);
 
-  useEffect(()=>{
-    updateTitle('Project Details');
-  }, [])
+  useEffect(() => {
+    updateTitle("Project Details");
+  }, []);
 
   useEffect(() => {
     const queryParams = new URLSearchParams(location.search);
