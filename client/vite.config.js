@@ -6,12 +6,8 @@ export default defineConfig({
   plugins: [react()],
   server: {
     proxy: {
-      "/api": {
-        target:"http://localhost:3000/"
-      },
-      "/auth": {
-        target:"http://localhost:3000/"
-      },
+      "/api": "https://homework-server-gzii.onrender.com/",
+      "/auth": "https://homework-server-gzii.onrender.com/"
     }
   }
 })

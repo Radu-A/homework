@@ -23,7 +23,7 @@ const Form = ({ projectList, updateProjectList }) => {
   useEffect(() => {
     const getProjects = async () => {
       try {
-        const resp = await fetch(`http://localhost:3000/api/projects/order?sort=${query}`);
+        const resp = await fetch(`/api/projects/order?sort=${query}`);
         const data = await resp.json();
         updateProjectList(data);
       } catch (error) {
@@ -36,7 +36,7 @@ const Form = ({ projectList, updateProjectList }) => {
   useEffect(() => {
     const getProjects = async () => {
       try {
-        const resp = await fetch(`http://localhost:3000/api/projects/search?keyword=${keyword}`);
+        const resp = await fetch(`/api/projects/search?keyword=${keyword}`);
         const data = await resp.json();
         updateProjectList(data);
       } catch (error) {
