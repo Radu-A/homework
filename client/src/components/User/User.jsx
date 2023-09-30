@@ -38,7 +38,7 @@ const User = () => {
     const getProjects = async () => {
       try {
         const resp = await fetch(
-          `http://localhost:3000/api/projects?email=${userLogged}`
+          `https://homework-server-gzii.onrender.com/api/projects?email=${userLogged}`
         );
         const data = await resp.json();
         setProjectList(data);
