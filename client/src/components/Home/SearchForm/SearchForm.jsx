@@ -1,16 +1,17 @@
 import { useEffect, useState } from "react";
-import { useForm } from 'react-hook-form';
+import { useForm } from "react-hook-form";
 
 const Form = ({ projectList, updateProjectList }) => {
-
   const [query, setQuery] = useState("");
 
-  const [keyword, setKeyword] = useState('');
+  const [keyword, setKeyword] = useState("");
 
   useEffect(() => {
     const getProjects = async () => {
       try {
-        const resp = await fetch("https://homework-server-gzii.onrender.com/api/projects");
+        const resp = await fetch(
+          "https://homework-server-gzii.onrender.com/api/projects"
+        );
         const data = await resp.json();
         updateProjectList(data);
       } catch (error) {
@@ -23,7 +24,9 @@ const Form = ({ projectList, updateProjectList }) => {
   useEffect(() => {
     const getProjects = async () => {
       try {
-        const resp = await fetch(`https://homework-server-gzii.onrender.com/api/projects/order?sort=${query}`);
+        const resp = await fetch(
+          `https://homework-server-gzii.onrender.com/api/projects/order?sort=${query}`
+        );
         const data = await resp.json();
         updateProjectList(data);
       } catch (error) {
@@ -36,7 +39,9 @@ const Form = ({ projectList, updateProjectList }) => {
   useEffect(() => {
     const getProjects = async () => {
       try {
-        const resp = await fetch(`https://homework-server-gzii.onrender.com/api/projects/search?keyword=${keyword}`);
+        const resp = await fetch(
+          `https://homework-server-gzii.onrender.com/api/projects/search?keyword=${keyword}`
+        );
         const data = await resp.json();
         updateProjectList(data);
       } catch (error) {
@@ -46,11 +51,15 @@ const Form = ({ projectList, updateProjectList }) => {
     getProjects();
   }, [keyword]);
 
-  const { register, handleSubmit, formState: { errors } } = useForm();
-  const onSubmit = data => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  const onSubmit = (data) => {
     setKeyword(data.Search);
   };
-    console.log(errors);
+  console.log(errors);
 
   const handleSelectChanche = (event) => {
     setQuery(event.target.value);
