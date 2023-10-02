@@ -11,7 +11,7 @@ import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
-import MenuIcon from '@mui/icons-material/Menu';
+import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
@@ -19,9 +19,8 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 
 function Navbar() {
-
-  const {userLogged} = useContext(UserLoggedContext)
-  const {user} = useContext(UserContext)
+  const { userLogged } = useContext(UserLoggedContext);
+  const { user } = useContext(UserContext);
 
   const [pages, setPages] = useState([]);
   const [settings, setSettigs] = useState([]);
@@ -86,16 +85,16 @@ function Navbar() {
               textDecoration: "none",
             }}
           >
-          <div className="logo-div">
-            <div>
-              <img className="logo-div-img" src={homework1} alt="" />
-            </div>
-            <h1>
-              <Link className="nav-link" to="/">
+            <div className="logo-div">
+              <div>
+                <img className="logo-div-img" src={homework1} alt="" />
+              </div>
+              <h1>
+                {/* <Link className="nav-link" to="/"> */}
                 Homework
-              </Link>
-            </h1>
-          </div>
+                {/* </Link> */}
+              </h1>
+            </div>
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -127,13 +126,13 @@ function Navbar() {
                 display: { xs: "block", md: "none" },
               }}
             >
-              {pages.map((page) => (
-                page.name === "Sing Up" ?
-                <MenuItem key={page.name} onClick={handleSignUp}>
-                  <Typography textAlign="center">{page.name}</Typography>
-                </MenuItem>:
-                <MenuItem key={page.name} onClick={handleCloseNavMenu}>
-                <Typography textAlign="center">{page.name}</Typography>
+              {settings.map((setting) => (
+                <MenuItem key={setting.name} onClick={handleCloseUserMenu}>
+                  <Typography textAlign="center">
+                    <Link className="nav-link" to={setting.url}>
+                      {setting.name}
+                    </Link>
+                  </Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -154,19 +153,19 @@ function Navbar() {
               textDecoration: "none",
             }}
           >
-          <div className="logo-div">
-            <div>
-              <img className="logo-div-img" src={homework1} alt="" />
-            </div>
-            <h1>
-              <Link className="nav-link" to="/">
+            <div className="logo-div">
+              <div>
+                <img className="logo-div-img" src={homework1} alt="" />
+              </div>
+              <h1>
+                {/* <Link className="nav-link" to="/"> */}
                 Homework
-              </Link>
-            </h1>
-          </div>
+                {/* </Link> */}
+              </h1>
+            </div>
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-          {pages.map((page) => (
+            {pages.map((page) => (
               <Button
                 key={page.name}
                 onClick={handleCloseNavMenu}
@@ -182,11 +181,7 @@ function Navbar() {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                {user.photo ? (
-                  <Avatar alt="Remy Sharp" src={user.photo} />
-                ) : (
-                  <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-                )}
+                {user.photo ?? <Avatar alt="Remy Sharp" src={user.photo} />}
               </IconButton>
             </Tooltip>
             <Menu

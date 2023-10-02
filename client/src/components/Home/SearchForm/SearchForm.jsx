@@ -9,7 +9,7 @@ const Form = ({ projectList, updateProjectList }) => {
   useEffect(() => {
     const getProjects = async () => {
       try {
-        const resp = await fetch("/api/projects");
+        const resp = await fetch(`${import.meta.env.VITE_SERVER}/api/projects`);
         const data = await resp.json();
         updateProjectList(data);
       } catch (error) {
@@ -23,7 +23,7 @@ const Form = ({ projectList, updateProjectList }) => {
     const getProjects = async () => {
       try {
         const resp = await fetch(
-          `http://localhost:3000/api/projects/order?sort=${query}`
+          `${import.meta.env.VITE_SERVER}/api/projects/order?sort=${query}`
         );
         const data = await resp.json();
         updateProjectList(data);
@@ -38,7 +38,7 @@ const Form = ({ projectList, updateProjectList }) => {
     const getProjects = async () => {
       try {
         const resp = await fetch(
-          `http://localhost:3000/api/projects/search?keyword=${keyword}`
+          `${import.meta.env.VITE_SERVER}/api/projects/search?keyword=${keyword}`
         );
         const data = await resp.json();
         updateProjectList(data);
