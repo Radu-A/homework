@@ -7,13 +7,13 @@ const Form = ({ projectList, updateProjectList }) => {
   const [keyword, setKeyword] = useState("");
 
   useEffect(() => {
-    let urlFetchProjects = "/api/projects";
+    let urlProjects = "/api/projects";
     if (import.meta.env.VITE_LOCAL_SERVER) {
-      urlFetchProjects = `${import.meta.env.VITE_LOCAL_SERVER}/api/projects`;
+      urlProjects = `${import.meta.env.VITE_LOCAL_SERVER}/api/projects`;
     }
     const getProjects = async () => {
       try {
-        const resp = await fetch(urlFetchProjects);
+        const resp = await fetch(urlProjects);
         const data = await resp.json();
         updateProjectList(data);
       } catch (error) {
@@ -24,13 +24,15 @@ const Form = ({ projectList, updateProjectList }) => {
   }, []);
 
   useEffect(() => {
+    let urlSortedProjects = `/api/projects/order?sort=${query}`;
+    if (import.meta.env.VITE_LOCAL_SERVER) {
+      urlSortedProjects = `${
+        import.meta.env.VITE_LOCAL_SERVER
+      }/api/projects/order?sort=${query}`;
+    }
     const getProjects = async () => {
       try {
-        const resp = await fetch(
-          `${
-            import.meta.env.VITE_LOCAL_SERVER
-          }/api/projects/order?sort=${query}`
-        );
+        const resp = await fetch(urlSortedProjects);
         const data = await resp.json();
         updateProjectList(data);
       } catch (error) {
@@ -41,13 +43,14 @@ const Form = ({ projectList, updateProjectList }) => {
   }, [query]);
 
   useEffect(() => {
+    let urlProjectsByKeyword = `/api/projects/search?keyword=${keyword}`
+    if (import.meta.env.VITE_LOCAL_SERVER) {
+      urlProjectsByKeyword = `${import.meta.env.VITE_LOCAL_SERVER
+      }/api/projects/search?keyword=${keyword}`
+    }
     const getProjects = async () => {
       try {
-        const resp = await fetch(
-          `${
-            import.meta.env.VITE_LOCAL_SERVER
-          }/api/projects/search?keyword=${keyword}`
-        );
+        const resp = await fetch(urlProjectsByKeyword);
         const data = await resp.json();
         updateProjectList(data);
       } catch (error) {
