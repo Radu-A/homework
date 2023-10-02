@@ -7,9 +7,13 @@ const Form = ({ projectList, updateProjectList }) => {
   const [keyword, setKeyword] = useState("");
 
   useEffect(() => {
+    let urlFetchProjects = "/api/projects";
+    if (import.meta.env.VITE_LOCAL_SERVER) {
+      urlFetchProjects = `${import.meta.env.VITE_LOCAL_SERVER}/api/projects`;
+    }
     const getProjects = async () => {
       try {
-        const resp = await fetch(`${import.meta.env.VITE_SERVER}/api/projects`);
+        const resp = await fetch(urlFetchProjects);
         const data = await resp.json();
         updateProjectList(data);
       } catch (error) {
@@ -23,7 +27,9 @@ const Form = ({ projectList, updateProjectList }) => {
     const getProjects = async () => {
       try {
         const resp = await fetch(
-          `${import.meta.env.VITE_SERVER}/api/projects/order?sort=${query}`
+          `${
+            import.meta.env.VITE_LOCAL_SERVER
+          }/api/projects/order?sort=${query}`
         );
         const data = await resp.json();
         updateProjectList(data);
@@ -38,7 +44,9 @@ const Form = ({ projectList, updateProjectList }) => {
     const getProjects = async () => {
       try {
         const resp = await fetch(
-          `${import.meta.env.VITE_SERVER}/api/projects/search?keyword=${keyword}`
+          `${
+            import.meta.env.VITE_LOCAL_SERVER
+          }/api/projects/search?keyword=${keyword}`
         );
         const data = await resp.json();
         updateProjectList(data);
