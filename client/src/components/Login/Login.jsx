@@ -1,9 +1,12 @@
 import { useContext, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { UserLoggedContext } from "../../context/userLoggedContext";
 import { useNavigate } from "react-router-dom";
-import Title from "../Title/Title";
+import axios from "axios";
+
+import { UserLoggedContext } from "../../context/userLoggedContext";
 import { TitleContext } from "../../context/titleContext";
+
+import Title from "../Title/Title";
 
 // Use server depending on environment variables
 let server = "";

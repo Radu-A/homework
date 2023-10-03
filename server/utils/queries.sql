@@ -31,7 +31,7 @@ CREATE TABLE projects (
 -- Insert users
 INSERT INTO users(
 	email, password, photo, firstname, lastname, curse, github)
-	VALUES ('saana.toivonen@example.com', 'saana.toivonen@example.com',
+	VALUES 	('saana.toivonen@example.com', 'saana.toivonen@example.com',
 			'https://randomuser.me/api/portraits/women/77.jpg', 
 			'Saana', 'Toivonen', '23-04', 'https://github.com/Saana'),
 			('debra.rodriquez@example.com', 'debra.rodriquez@example.com',
@@ -45,7 +45,10 @@ INSERT INTO users(
 			'Sandrine', 'Lambert', '23-01', 'https://github.com/Sandrine'),
 			('michal.toivonen@example.com', 'michal.toivonen@example.com',
 			'https://randomuser.me/api/portraits/women/77.jpg', 
-			'Michal', 'Toivonen', '23-01', 'https://github.com/Michal');
+			'Michal', 'Toivonen', '23-01', 'https://github.com/Michal'),
+			('becabecks3@gmail.com', 'becabecks3@gmail.com', 
+			'https://avatars.githubusercontent.com/u/101715001?v=4',
+			'Rebeca', 'Arrogante', '23-04', 'https://github.com/becabecks3');
 -- Insert projects
 INSERT INTO public.projects(
 	user_id, title, date, development, description, done, todo, img_small, img_big, github, site)

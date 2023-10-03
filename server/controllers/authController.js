@@ -1,12 +1,10 @@
-const express = require("express");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
-
-const app = express();
 
 const tokenSecret = process.env.TOKEN_SECRET;
 
 const getToken = (req, res) => {
+  console.log("You arrived at getToken");
   // Creating token using JWT and tokenSecret
   const token = jwt.sign(
     { email: req.email, user_id: req.user_id },
@@ -33,7 +31,7 @@ const getToken = (req, res) => {
 };
 
 const deleteToken = (req, res) => {
-  console.log("deleteToken");
+  console.log("You arrived at deleteToken");
   res.clearCookie("access-token").clearCookie("user-logged").json({
     message: "Session closed",
   });
