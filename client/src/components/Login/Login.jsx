@@ -30,7 +30,7 @@ const Login = () => {
     formState: { errors },
   } = useForm(UserLoggedContext);
   const onSubmit = (data) => {
-    const tryLogin = async () => {
+    const tryFetchLogin = async () => {
       try {
         const resp = await fetch(`${server}/auth/login`, {
           method: "POST",
@@ -49,7 +49,26 @@ const Login = () => {
         console.log(error);
       }
     };
-    tryLogin();
+    // tryFetchLogin();
+    const tryAxiosLogin = async () => {
+      try {
+        const response = await axios(`${server}/auth/login`, {
+          method: "post",
+          url: `${server}/auth/login`,
+          data: data,
+        });
+        const respData = await response.data;
+        if (respData.message === "Correct password, user logged") {
+          updateUserLogged(data.email);
+          navigate("/user");
+        } else {
+          setMessage(respData.message);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    tryAxiosLogin();
   };
 
   return (
