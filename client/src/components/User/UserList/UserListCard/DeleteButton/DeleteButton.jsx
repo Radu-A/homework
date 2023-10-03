@@ -6,6 +6,14 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 
+// Use server depending on environment variables
+let server = "";
+if (import.meta.env.VITE_LOCAL_SERVER) {
+  server = import.meta.env.VITE_LOCAL_SERVER;
+} else if (import.meta.env.VITE_CLOUD_SERVER) {
+  server = import.meta.env.VITE_CLOUD_SERVER;
+}
+
 const DeleteButton = ({ project }) => {
   const [open, setOpen] = React.useState(false);
 
@@ -19,7 +27,7 @@ const DeleteButton = ({ project }) => {
 
   const handleAgree = async () => {
     try {
-      const resp = await fetch(`http://localhost:3000/api/projects`, {
+      const resp = await fetch(`${server}/api/projects`, {
         method: "DELETE",
         credentials: "include",
         headers: { "Content-Type": "application/json" },

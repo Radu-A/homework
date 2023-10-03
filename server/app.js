@@ -27,8 +27,8 @@ app.use(
 
 // Middlewares
 //Enable all CORS requests
-app.use(cors({ credentials: true, origin: "http://localhost:5173" }));
-// app.use(cors());
+// app.use(cors({ credentials: true, origin: "http://localhost:5173" }));
+app.use(cors());
 app.use(express.json());
 app.use(cookieParser()); //Better access to cookies
 app.use("/api/users", usersRouter);

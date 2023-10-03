@@ -5,6 +5,14 @@ import { useLocation } from "react-router";
 import { useContext } from "react";
 import { TitleContext } from "../../context/titleContext";
 
+// Use server depending on environment variables
+let server = "";
+if (import.meta.env.VITE_LOCAL_SERVER) {
+  server = import.meta.env.VITE_LOCAL_SERVER;
+} else if (import.meta.env.VITE_CLOUD_SERVER) {
+  server = import.meta.env.VITE_CLOUD_SERVER;
+}
+
 const Project = () => {
   const [project, setProject] = useState({});
 
@@ -23,7 +31,7 @@ const Project = () => {
     const getProject = async () => {
       try {
         const resp = await fetch(
-          `http://localhost:3000/api/projects?project_id=${projectId}`
+          `${server}/api/projects?project_id=${projectId}`
         );
         const data = await resp.json();
         setProject(data[0]);

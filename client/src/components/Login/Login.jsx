@@ -5,6 +5,14 @@ import { useNavigate } from "react-router-dom";
 import Title from "../Title/Title";
 import { TitleContext } from "../../context/titleContext";
 
+// Use server depending on environment variables
+let server = "";
+if (import.meta.env.VITE_LOCAL_SERVER) {
+  server = import.meta.env.VITE_LOCAL_SERVER;
+} else if (import.meta.env.VITE_CLOUD_SERVER) {
+  server = import.meta.env.VITE_CLOUD_SERVER;
+}
+
 const Login = () => {
   // This context change the text of "Title" component
   const { updateTitle } = useContext(TitleContext);
@@ -24,7 +32,7 @@ const Login = () => {
   const onSubmit = (data) => {
     const tryLogin = async () => {
       try {
-        const resp = await fetch(`/auth/login`, {
+        const resp = await fetch(`${server}/auth/login`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(data),

@@ -3,6 +3,14 @@ import { useForm } from "react-hook-form";
 import { UserLoggedContext } from "../../../context/userLoggedContext";
 import { useNavigate } from "react-router-dom";
 
+// Use server depending on environment variables
+let server = "";
+if (import.meta.env.VITE_LOCAL_SERVER) {
+  server = import.meta.env.VITE_LOCAL_SERVER;
+} else if (import.meta.env.VITE_CLOUD_SERVER) {
+  server = import.meta.env.VITE_CLOUD_SERVER;
+}
+
 const SignForm = ({ githubInfo }) => {
   const { updateUserLogged } = useContext(UserLoggedContext);
   const navigate = useNavigate();
@@ -37,7 +45,7 @@ const SignForm = ({ githubInfo }) => {
 
     const tryLogin = async () => {
       try {
-        const resp = await fetch(`/auth/login`, {
+        const resp = await fetch(`${server}/auth/login`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(data),
@@ -57,7 +65,7 @@ const SignForm = ({ githubInfo }) => {
 
     const createUser = async () => {
       try {
-        const resp = await fetch(`http://localhost:3000/api/users`, {
+        const resp = await fetch(`${server}/api/users`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(newUser),

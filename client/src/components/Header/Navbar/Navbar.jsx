@@ -22,6 +22,8 @@ function Navbar() {
   const { userLogged } = useContext(UserLoggedContext);
   const { user } = useContext(UserContext);
 
+  console.log(user.photo);
+
   const [pages, setPages] = useState([]);
   const [settings, setSettigs] = useState([]);
 
@@ -181,7 +183,8 @@ function Navbar() {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                {user.photo ?? <Avatar alt="Remy Sharp" src={user.photo} />}
+                {user.photo ?  <Avatar alt="Remy Sharp" src={user.photo} /> : <Avatar alt="Remy Sharp" src='' />}
+                
               </IconButton>
             </Tooltip>
             <Menu

@@ -4,7 +4,13 @@ import { useContext } from "react";
 import { TitleContext } from "../../../context/titleContext";
 import { useNavigate } from "react-router-dom";
 
-// https://api.github.com/users/${username}
+// Use server depending on environment variables
+let server = "";
+if (import.meta.env.VITE_LOCAL_SERVER) {
+  server = import.meta.env.VITE_LOCAL_SERVER;
+} else if (import.meta.env.VITE_CLOUD_SERVER) {
+  server = import.meta.env.VITE_CLOUD_SERVER;
+}
 
 const NewForm = ({ user }) => {
   const navigate = useNavigate();
@@ -39,7 +45,7 @@ const NewForm = ({ user }) => {
       site: data.site,
     };
 
-    fetch(`http://localhost:3000/api/projects`, {
+    fetch(`${server}/api/projects`, {
       method: "POST",
       credentials: "include",
       headers: { "Content-Type": "application/json" },
