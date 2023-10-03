@@ -48,7 +48,9 @@ INSERT INTO users(
 			'Michal', 'Toivonen', '23-01', 'https://github.com/Michal'),
 			('becabecks3@gmail.com', 'becabecks3@gmail.com', 
 			'https://avatars.githubusercontent.com/u/101715001?v=4',
-			'Rebeca', 'Arrogante', '23-04', 'https://github.com/becabecks3');
+			'Rebeca', 'Arrogante', '23-04', 'https://github.com/becabecks3'),
+			('santivediap@gmail.com', 'santivediap@gmail.com', 'https://avatars.githubusercontent.com/u/130933779?v=4',
+			'Santiago', 'Vedia', '23-04', 'https://github.com/santivediap',);
 -- Insert projects
 INSERT INTO public.projects(
 	user_id, title, date, development, description, done, todo, img_small, img_big, github, site)
@@ -137,6 +139,34 @@ INSERT INTO public.projects(
 			'https://github.com/becabecks3/Quizz-Project/raw/main/assets/screenshots/captura8.png',
 			'https://github.com/becabecks3/Quizz-Project',
 			'https://github.com/becabecks3/Quizz-Project'
+			),
+			(7, 'Findjobs', '2023-05-16', 'Back-End',
+			'Esta es una aplicación web creada para aquellos que quieren encontrar su primer empleo en el mundo de la tecnología. Permite a los usuarios buscar a través de scrapin de dos páginas externas varios resultados acorde con su búsqueda con puesto de trabajo y provincia.',
+			'- Operaciones CRUD en bases de datos SQL (información de usuarios y ofertas guardadas por usuario) y bases de datos NoSQL para las ofertas de empleo administradas por el administrador.
+			- Búsqueda y visualización de ofertas de empleo obtenidas mediante web scraping de dos sitios web diferentes, además de las ofertas de empleo creadas por el administrador y almacenadas en la base de datos de Atlas de MongoDB.
+			- Funcionalidad de registro, inicio de sesión y cierre de sesión para los usuarios, con uso de cookies y tokens, y rutas protegidas.
+			- Menú hamburguesa para navegar entre las diferentes vistas de la aplicación.
+			- Vista privada para el administrador, donde puede crear y eliminar ofertas de empleo almacenadas en Atlas.', 
+			'- Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vivamus maximus pharetra lectus vitae vehicula.
+			- Nam nec massa egestas, tristique quam sit amet, maximus lacus. Nunc dignissim quam urna, fringilla pellentesque nunc porta eu. Quisque mollis nec dolor quis ullamcorper.
+			- Aenean rutrum mauris nulla, sit amet finibus diam sagittis a. Nunc at est id nisl imperdiet pulvinar. Donec pulvinar sit amet turpis ac posuere.',
+			'https://github.com/santivediap/backend-proyect-findjobs/raw/main/public/assets/Captura1.PNG',
+			'https://github.com/santivediap/backend-proyect-findjobs/raw/main/public/assets/Signupcaptura.PNG',
+			'https://github.com/santivediap/backend-proyect-findjobs',
+			'https://github.com/santivediap/backend-proyect-findjobs'
+			),
+			(7, 'Lodeur', '2023-07-22', 'Full-Stack',
+			'Curabitur fermentum ex quam, ac pulvinar mauris vehicula eu. Pellentesque porta quis libero elementum porta. Nunc interdum eros neque, non feugiat ex consectetur sed. Nulla tincidunt eleifend nisi, id ultricies tortor. Mauris vel maximus sem. Etiam commodo urna fringilla tellus placerat molestie.',
+			'- Sed sit amet porttitor diam, id sodales ante. In quis elit arcu. Pellentesque sed efficitur neque.
+			- Vestibulum suscipit, massa et commodo porta, dolor sem tincidunt tellus, sit amet ultrices elit ipsum ut tellus. Suspendisse sagittis magna dictum, malesuada lorem ac, euismod elit.
+			- Aliquam sagittis mollis leo. Maecenas et nibh ac erat sagittis luctus. Ut ultrices sagittis venenatis.', 
+			'- Morbi vitae eleifend lectus, vel rhoncus tortor. Curabitur posuere urna aliquet leo maximus porttitor. Suspendisse potenti.
+			- Vivamus aliquam at augue in commodo. Nullam porttitor at mi at vestibulum. In hac habitasse platea dictumst. Ut ullamcorper est in felis aliquam scelerisque. Nunc bibendum faucibus sem vitae aliquet.
+			- Vivamus ac lectus nunc. Fusce ac leo id enim sagittis aliquam id at neque.',
+			'https://github.com/santivediap/Lodeur-ProyectoFinal/raw/develop/client/public/assets/Captura%20de%20pantalla%202023-07-17%20234254.png?raw=true',
+			'https://github.com/santivediap/Lodeur-ProyectoFinal/raw/develop/client/public/assets/Captura%20de%20pantalla%202023-07-17%20234335.png?raw=true',
+			'https://github.com/santivediap/Lodeur-ProyectoFinal',
+			'https://lodeur.onrender.com/'
 			);
 
 const nowDate = new Date();
