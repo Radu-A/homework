@@ -45,11 +45,11 @@ You need to install npm. To install the latest version:
    ```js
    npm install
    ```
-3. Run the node server on the root directory
+4. Run the node server on the root directory
    ```js
    npm start
    ```
-3. Run react aplication on "client" directory
+5. Run react aplication on "client" directory
    ```js
    npm start
    ```
@@ -66,7 +66,8 @@ You need to install npm. To install the latest version:
 
 Develop an entire web aplication with PostgreSQL, Node and React
 
-Phase 1 
+Phase 1
+
 - A board with all the projects
 - A detail view of the projects
 - A user section to create or delete projects
@@ -74,13 +75,14 @@ Phase 1
 - A log in view
 
 Phase 2
+
 - Real authentication with Github
 - Posibility to vote projects
 
 ### Screenshot
 
-![](./assets/screenshot-smartphone.jpg)
-![](./assets/screenshot-desktop.jpg)
+![](./server/assets/screenshot-smartphone.jpg)
+![](./server/assets/screenshot-desktop.jpg)
 
 ### Links
 
@@ -102,12 +104,13 @@ Phase 2
 ### Key points
 
 Back-end
+
 - Data model design with Entity-Relationship Diagram
 - Create and deploy a PostgreSQL Data Base
 - Construct the CRUD with Node and PostgreSQL
 - Routing with Node and Express
 - Reset the value of the input after the search
-Front-end
+  Front-end
 - Build the React components structure
 - Functionality with React states and lifecycle of their components
 - Implement Hooks to enlarge the potential of the App
