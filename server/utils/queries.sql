@@ -50,7 +50,9 @@ INSERT INTO users(
 			'https://avatars.githubusercontent.com/u/101715001?v=4',
 			'Rebeca', 'Arrogante', '23-04', 'https://github.com/becabecks3'),
 			('santivediap@gmail.com', 'santivediap@gmail.com', 'https://avatars.githubusercontent.com/u/130933779?v=4',
-			'Santiago', 'Vedia', '23-04', 'https://github.com/santivediap',);
+			'Santiago', 'Vedia', '23-04', 'https://github.com/santivediap'),
+			('elcastravete@gmail.com', 'elcastravete@gmail.com', 'https://avatars.githubusercontent.com/u/75849528?v=4',
+			'Victor', 'Outeiro', '23-04', 'https://github.com/Radu-A');
 -- Insert projects
 INSERT INTO public.projects(
 	user_id, title, date, development, description, done, todo, img_small, img_big, github, site)
